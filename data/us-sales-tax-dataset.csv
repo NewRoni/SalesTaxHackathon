@@ -1,0 +1,817 @@
+state,product_type,tax_rate
+Alabama,General,0.04
+Alabama,Food,0.04
+Alabama,Clothing,0.04
+Alabama,Digital,0
+Alabama,Manufacturing,0.04
+Alabama,Prescription,0.04
+Alabama,Automobile,0.06
+Alabama,Alcohol,0.04
+Alaska,General,0
+Alaska,Food,0
+Alaska,Clothing,0
+Alaska,Digital,0
+Alaska,Manufacturing,0
+Alaska,Prescription,0
+Alaska,Automobile,0
+Alaska,Alcohol,0
+Arizona,General,0.056
+Arizona,Food,0
+Arizona,Clothing,0.056
+Arizona,Digital,0.056
+Arizona,Manufacturing,0.056
+Arizona,Prescription,0.056
+Arizona,Automobile,0.056
+Arizona,Alcohol,0.056
+Arkansas,General,0.065
+Arkansas,Food,0.00125
+Arkansas,Clothing,0.065
+Arkansas,Digital,0.065
+Arkansas,Manufacturing,0.032
+Arkansas,Prescription,0.065
+Arkansas,Automobile,0.065
+Arkansas,Alcohol,0.065
+California,General,0.0725
+California,Food,0
+California,Clothing,0.0725
+California,Digital,0
+California,Manufacturing,0.0725
+California,Prescription,0.0725
+California,Automobile,0.0725
+California,Alcohol,0.0725
+Colorado,General,0.029
+Colorado,Food,0
+Colorado,Clothing,0.029
+Colorado,Digital,0.029
+Colorado,Manufacturing,0.029
+Colorado,Prescription,0.029
+Colorado,Automobile,0.029
+Colorado,Alcohol,0.029
+Connecticut,General,0.0635
+Connecticut,Food,0.0635
+Connecticut,Clothing,0.0635
+Connecticut,Digital,0.01
+Connecticut,Manufacturing,0.0635
+Connecticut,Prescription,0.0635
+Connecticut,Automobile,0.0635
+Connecticut,Alcohol,0.0635
+Delaware,General,0
+Delaware,Food,0
+Delaware,Clothing,0
+Delaware,Digital,0
+Delaware,Manufacturing,0
+Delaware,Prescription,0
+Delaware,Automobile,0
+Delaware,Alcohol,0
+Florida,General,0.06
+Florida,Food,0
+Florida,Clothing,0.06
+Florida,Digital,0
+Florida,Manufacturing,0
+Florida,Prescription,0.06
+Florida,Automobile,0.06
+Florida,Alcohol,0.06
+Georgia,General,0.04
+Georgia,Food,0
+Georgia,Clothing,0.04
+Georgia,Digital,0.04
+Georgia,Manufacturing,0.04
+Georgia,Prescription,0.04
+Georgia,Automobile,0.04
+Georgia,Alcohol,0.04
+Hawaii,General,0.04
+Hawaii,Food,0.04
+Hawaii,Clothing,0.04
+Hawaii,Digital,0.04
+Hawaii,Manufacturing,0.04
+Hawaii,Prescription,0.04
+Hawaii,Automobile,0.04
+Hawaii,Alcohol,0.04
+Idaho,General,0.06
+Idaho,Food,0.06
+Idaho,Clothing,0.06
+Idaho,Digital,0.06
+Idaho,Manufacturing,0
+Idaho,Prescription,0.06
+Idaho,Automobile,0.06
+Idaho,Alcohol,0.06
+Illinois,General,0.0625
+Illinois,Food,0.01
+Illinois,Clothing,0.0625
+Illinois,Digital,0.0625
+Illinois,Manufacturing,0.0625
+Illinois,Prescription,0.01
+Illinois,Automobile,0.0625
+Illinois,Alcohol,0.0625
+Indiana,General,0.07
+Indiana,Food,0
+Indiana,Clothing,0.07
+Indiana,Digital,0.07
+Indiana,Manufacturing,0.07
+Indiana,Prescription,0.07
+Indiana,Automobile,0.07
+Indiana,Alcohol,0.07
+Iowa,General,0.06
+Iowa,Food,0
+Iowa,Clothing,0.06
+Iowa,Digital,0.06
+Iowa,Manufacturing,0.06
+Iowa,Prescription,0.06
+Iowa,Automobile,0.06
+Iowa,Alcohol,0.06
+Kansas,General,0.065
+Kansas,Food,0.065
+Kansas,Clothing,0.065
+Kansas,Digital,0.065
+Kansas,Manufacturing,0.065
+Kansas,Prescription,0.065
+Kansas,Automobile,0.065
+Kansas,Alcohol,0.065
+Kentucky,General,0.06
+Kentucky,Food,0
+Kentucky,Clothing,0.06
+Kentucky,Digital,0.06
+Kentucky,Manufacturing,0.06
+Kentucky,Prescription,0.06
+Kentucky,Automobile,0.06
+Kentucky,Alcohol,0.06
+Louisiana,General,0.0445
+Louisiana,Food,0
+Louisiana,Clothing,0.0445
+Louisiana,Digital,0
+Louisiana,Manufacturing,0.0445
+Louisiana,Prescription,0
+Louisiana,Automobile,0.0445
+Louisiana,Alcohol,0.0445
+Maine,General,0.055
+Maine,Food,0
+Maine,Clothing,0.055
+Maine,Digital,0.055
+Maine,Manufacturing,0.055
+Maine,Prescription,0.055
+Maine,Automobile,0.055
+Maine,Alcohol,0.055
+Maryland,General,0.06
+Maryland,Food,0
+Maryland,Clothing,0.06
+Maryland,Digital,0.06
+Maryland,Manufacturing,0.06
+Maryland,Prescription,0.06
+Maryland,Automobile,0.06
+Maryland,Alcohol,0.15
+Massachusetts,General,0.0625
+Massachusetts,Food,0
+Massachusetts,Clothing,0
+Massachusetts,Digital,0.0625
+Massachusetts,Manufacturing,0.0625
+Massachusetts,Prescription,0.0625
+Massachusetts,Automobile,0.0625
+Massachusetts,Alcohol,0.0625
+Michigan,General,0.06
+Michigan,Food,0
+Michigan,Clothing,0.06
+Michigan,Digital,0
+Michigan,Manufacturing,0.06
+Michigan,Prescription,0
+Michigan,Automobile,0.06
+Michigan,Alcohol,0.06
+Minnesota,General,0.06875
+Minnesota,Food,0
+Minnesota,Clothing,0
+Minnesota,Digital,0.06875
+Minnesota,Manufacturing,0.06875
+Minnesota,Prescription,0.06875
+Minnesota,Automobile,0.06875
+Minnesota,Alcohol,0.06875
+Mississippi,General,0.07
+Mississippi,Food,0.07
+Mississippi,Clothing,0.07
+Mississippi,Digital,0.07
+Mississippi,Manufacturing,0.015
+Mississippi,Prescription,0.07
+Mississippi,Automobile,0.07
+Mississippi,Alcohol,0.07
+Missouri,General,0.04225
+Missouri,Food,0.01225
+Missouri,Clothing,0.04225
+Missouri,Digital,0.04225
+Missouri,Manufacturing,0.04225
+Missouri,Prescription,0.04225
+Missouri,Automobile,0.04225
+Missouri,Alcohol,0.04225
+Montana,General,0
+Montana,Food,0
+Montana,Clothing,0
+Montana,Digital,0
+Montana,Manufacturing,0
+Montana,Prescription,0
+Montana,Automobile,0
+Montana,Alcohol,0
+Nebraska,General,0.055
+Nebraska,Food,0
+Nebraska,Clothing,0.055
+Nebraska,Digital,0
+Nebraska,Manufacturing,0.055
+Nebraska,Prescription,0.055
+Nebraska,Automobile,0.055
+Nebraska,Alcohol,0.055
+Nevada,General,0.0685
+Nevada,Food,0
+Nevada,Clothing,0.0685
+Nevada,Digital,0
+Nevada,Manufacturing,0.0685
+Nevada,Prescription,0.0685
+Nevada,Automobile,0.0685
+Nevada,Alcohol,0.0685
+New Hampshire,General,0
+New Hampshire,Food,0
+New Hampshire,Clothing,0
+New Hampshire,Digital,0
+New Hampshire,Manufacturing,0
+New Hampshire,Prescription,0
+New Hampshire,Automobile,0
+New Hampshire,Alcohol,0
+New Jersey,General,0.06625
+New Jersey,Food,0
+New Jersey,Clothing,0
+New Jersey,Digital,0.06625
+New Jersey,Manufacturing,0.06625
+New Jersey,Prescription,0.06625
+New Jersey,Automobile,0.06625
+New Jersey,Alcohol,0.06625
+New Mexico,General,0.05125
+New Mexico,Food,0
+New Mexico,Clothing,0.05125
+New Mexico,Digital,0.05125
+New Mexico,Manufacturing,0.05125
+New Mexico,Prescription,0
+New Mexico,Automobile,0.05125
+New Mexico,Alcohol,0.05125
+New York,General,0.04
+New York,Food,0
+New York,Clothing,0
+New York,Digital,0.04
+New York,Manufacturing,0.04
+New York,Prescription,0.04
+New York,Automobile,0.04
+New York,Alcohol,0.04
+North Carolina,General,0.0475
+North Carolina,Food,0.02
+North Carolina,Clothing,0.0475
+North Carolina,Digital,0.0475
+North Carolina,Manufacturing,0.0475
+North Carolina,Prescription,0.0475
+North Carolina,Automobile,0.0475
+North Carolina,Alcohol,0.0475
+North Dakota,General,0.05
+North Dakota,Food,0.05
+North Dakota,Clothing,0.05
+North Dakota,Digital,0.05
+North Dakota,Manufacturing,0.05
+North Dakota,Prescription,0.05
+North Dakota,Automobile,0.05
+North Dakota,Alcohol,0.05
+Ohio,General,0.0575
+Ohio,Food,0
+Ohio,Clothing,0.0575
+Ohio,Digital,0.0575
+Ohio,Manufacturing,0.0575
+Ohio,Prescription,0.0575
+Ohio,Automobile,0.0575
+Ohio,Alcohol,0.0575
+Oklahoma,General,0.045
+Oklahoma,Food,0.045
+Oklahoma,Clothing,0.045
+Oklahoma,Digital,0.045
+Oklahoma,Manufacturing,0.045
+Oklahoma,Prescription,0.045
+Oklahoma,Automobile,0.045
+Oklahoma,Alcohol,0.045
+Oregon,General,0
+Oregon,Food,0
+Oregon,Clothing,0
+Oregon,Digital,0
+Oregon,Manufacturing,0
+Oregon,Prescription,0
+Oregon,Automobile,0
+Oregon,Alcohol,0
+Pennsylvania,General,0.06
+Pennsylvania,Food,0
+Pennsylvania,Clothing,0
+Pennsylvania,Digital,0
+Pennsylvania,Manufacturing,0.06
+Pennsylvania,Prescription,0.06
+Pennsylvania,Automobile,0.06
+Pennsylvania,Alcohol,0.06
+Rhode Island,General,0.07
+Rhode Island,Food,0
+Rhode Island,Clothing,0
+Rhode Island,Digital,0.07
+Rhode Island,Manufacturing,0.07
+Rhode Island,Prescription,0.07
+Rhode Island,Automobile,0.07
+Rhode Island,Alcohol,0.07
+South Carolina,General,0.06
+South Carolina,Food,0
+South Carolina,Clothing,0.06
+South Carolina,Digital,0.06
+South Carolina,Manufacturing,0.06
+South Carolina,Prescription,0
+South Carolina,Automobile,0.06
+South Carolina,Alcohol,0.06
+South Dakota,General,0.045
+South Dakota,Food,0.045
+South Dakota,Clothing,0.045
+South Dakota,Digital,0.045
+South Dakota,Manufacturing,0.045
+South Dakota,Prescription,0.045
+South Dakota,Automobile,0.045
+South Dakota,Alcohol,0.045
+Tennessee,General,0.07
+Tennessee,Food,0.04
+Tennessee,Clothing,0.07
+Tennessee,Digital,0.07
+Tennessee,Manufacturing,0.07
+Tennessee,Prescription,0.07
+Tennessee,Automobile,0.07
+Tennessee,Alcohol,0.07
+Texas,General,0.0625
+Texas,Food,0
+Texas,Clothing,0.0625
+Texas,Digital,0.0625
+Texas,Manufacturing,0.0625
+Texas,Prescription,0.0625
+Texas,Automobile,0.0625
+Texas,Alcohol,0.0625
+Utah,General,0.0485
+Utah,Food,0.0175
+Utah,Clothing,0.0485
+Utah,Digital,0.0485
+Utah,Manufacturing,0.0485
+Utah,Prescription,0.0485
+Utah,Automobile,0.0485
+Utah,Alcohol,0.0485
+Vermont,General,0.06
+Vermont,Food,0
+Vermont,Clothing,0
+Vermont,Digital,0.06
+Vermont,Manufacturing,0.06
+Vermont,Prescription,0.06
+Vermont,Automobile,0.06
+Vermont,Alcohol,0.06
+Virginia,General,0.053
+Virginia,Food,0.025
+Virginia,Clothing,0.053
+Virginia,Digital,0.053
+Virginia,Manufacturing,0.053
+Virginia,Prescription,0.053
+Virginia,Automobile,0.053
+Virginia,Alcohol,0.053
+Washington,General,0.065
+Washington,Food,0
+Washington,Clothing,0.065
+Washington,Digital,0.065
+Washington,Manufacturing,0.065
+Washington,Prescription,0.065
+Washington,Automobile,0.065
+Washington,Alcohol,0.065
+Washington D.C.,General,0.06
+Washington D.C.,Food,0
+Washington D.C.,Clothing,0.06
+Washington D.C.,Digital,0.06
+Washington D.C.,Manufacturing,0.06
+Washington D.C.,Prescription,0.06
+Washington D.C.,Automobile,0.06
+Washington D.C.,Alcohol,0.06
+West Virginia,General,0.06
+West Virginia,Food,0.06
+West Virginia,Clothing,0.06
+West Virginia,Digital,0.06
+West Virginia,Manufacturing,0.06
+West Virginia,Prescription,0.06
+West Virginia,Automobile,0.06
+West Virginia,Alcohol,0.06
+Wisconsin,General,0.05
+Wisconsin,Food,0
+Wisconsin,Clothing,0.05
+Wisconsin,Digital,0.05
+Wisconsin,Manufacturing,0.05
+Wisconsin,Prescription,0.05
+Wisconsin,Automobile,0.05
+Wisconsin,Alcohol,0.05
+Wyoming,General,0.04
+Wyoming,Food,0
+Wyoming,Clothing,0.04
+Wyoming,Digital,0.04
+Wyoming,Manufacturing,0.04
+Wyoming,Prescription,0.04
+Wyoming,Automobile,0.04
+Wyoming,Alcohol,0.04
+Alabama,General,0.04
+Alabama,Food,0.04
+Alabama,Clothing,0.04
+Alabama,Digital,0
+Alabama,Manufacturing,0.04
+Alabama,Prescription,0.04
+Alabama,Automobile,0.06
+Alabama,Alcohol,0.04
+Alaska,General,0
+Alaska,Food,0
+Alaska,Clothing,0
+Alaska,Digital,0
+Alaska,Manufacturing,0
+Alaska,Prescription,0
+Alaska,Automobile,0
+Alaska,Alcohol,0
+Arizona,General,0.056
+Arizona,Food,0
+Arizona,Clothing,0.056
+Arizona,Digital,0.056
+Arizona,Manufacturing,0.056
+Arizona,Prescription,0.056
+Arizona,Automobile,0.056
+Arizona,Alcohol,0.056
+Arkansas,General,0.065
+Arkansas,Food,0.00125
+Arkansas,Clothing,0.065
+Arkansas,Digital,0.065
+Arkansas,Manufacturing,0.032
+Arkansas,Prescription,0.065
+Arkansas,Automobile,0.065
+Arkansas,Alcohol,0.065
+California,General,0.0725
+California,Food,0
+California,Clothing,0.0725
+California,Digital,0
+California,Manufacturing,0.0725
+California,Prescription,0.0725
+California,Automobile,0.0725
+California,Alcohol,0.0725
+Colorado,General,0.029
+Colorado,Food,0
+Colorado,Clothing,0.029
+Colorado,Digital,0.029
+Colorado,Manufacturing,0.029
+Colorado,Prescription,0.029
+Colorado,Automobile,0.029
+Colorado,Alcohol,0.029
+Connecticut,General,0.0635
+Connecticut,Food,0.0635
+Connecticut,Clothing,0.0635
+Connecticut,Digital,0.01
+Connecticut,Manufacturing,0.0635
+Connecticut,Prescription,0.0635
+Connecticut,Automobile,0.0635
+Connecticut,Alcohol,0.0635
+Delaware,General,0
+Delaware,Food,0
+Delaware,Clothing,0
+Delaware,Digital,0
+Delaware,Manufacturing,0
+Delaware,Prescription,0
+Delaware,Automobile,0
+Delaware,Alcohol,0
+Florida,General,0.06
+Florida,Food,0
+Florida,Clothing,0.06
+Florida,Digital,0
+Florida,Manufacturing,0
+Florida,Prescription,0.06
+Florida,Automobile,0.06
+Florida,Alcohol,0.06
+Georgia,General,0.04
+Georgia,Food,0
+Georgia,Clothing,0.04
+Georgia,Digital,0.04
+Georgia,Manufacturing,0.04
+Georgia,Prescription,0.04
+Georgia,Automobile,0.04
+Georgia,Alcohol,0.04
+Hawaii,General,0.04
+Hawaii,Food,0.04
+Hawaii,Clothing,0.04
+Hawaii,Digital,0.04
+Hawaii,Manufacturing,0.04
+Hawaii,Prescription,0.04
+Hawaii,Automobile,0.04
+Hawaii,Alcohol,0.04
+Idaho,General,0.06
+Idaho,Food,0.06
+Idaho,Clothing,0.06
+Idaho,Digital,0.06
+Idaho,Manufacturing,0
+Idaho,Prescription,0.06
+Idaho,Automobile,0.06
+Idaho,Alcohol,0.06
+Illinois,General,0.0625
+Illinois,Food,0.01
+Illinois,Clothing,0.0625
+Illinois,Digital,0.0625
+Illinois,Manufacturing,0.0625
+Illinois,Prescription,0.01
+Illinois,Automobile,0.0625
+Illinois,Alcohol,0.0625
+Indiana,General,0.07
+Indiana,Food,0
+Indiana,Clothing,0.07
+Indiana,Digital,0.07
+Indiana,Manufacturing,0.07
+Indiana,Prescription,0.07
+Indiana,Automobile,0.07
+Indiana,Alcohol,0.07
+Iowa,General,0.06
+Iowa,Food,0
+Iowa,Clothing,0.06
+Iowa,Digital,0.06
+Iowa,Manufacturing,0.06
+Iowa,Prescription,0.06
+Iowa,Automobile,0.06
+Iowa,Alcohol,0.06
+Kansas,General,0.065
+Kansas,Food,0.065
+Kansas,Clothing,0.065
+Kansas,Digital,0.065
+Kansas,Manufacturing,0.065
+Kansas,Prescription,0.065
+Kansas,Automobile,0.065
+Kansas,Alcohol,0.065
+Kentucky,General,0.06
+Kentucky,Food,0
+Kentucky,Clothing,0.06
+Kentucky,Digital,0.06
+Kentucky,Manufacturing,0.06
+Kentucky,Prescription,0.06
+Kentucky,Automobile,0.06
+Kentucky,Alcohol,0.06
+Louisiana,General,0.0445
+Louisiana,Food,0
+Louisiana,Clothing,0.0445
+Louisiana,Digital,0
+Louisiana,Manufacturing,0.0445
+Louisiana,Prescription,0
+Louisiana,Automobile,0.0445
+Louisiana,Alcohol,0.0445
+Maine,General,0.055
+Maine,Food,0
+Maine,Clothing,0.055
+Maine,Digital,0.055
+Maine,Manufacturing,0.055
+Maine,Prescription,0.055
+Maine,Automobile,0.055
+Maine,Alcohol,0.055
+Maryland,General,0.06
+Maryland,Food,0
+Maryland,Clothing,0.06
+Maryland,Digital,0.06
+Maryland,Manufacturing,0.06
+Maryland,Prescription,0.06
+Maryland,Automobile,0.06
+Maryland,Alcohol,0.15
+Massachusetts,General,0.0625
+Massachusetts,Food,0
+Massachusetts,Clothing,0
+Massachusetts,Digital,0.0625
+Massachusetts,Manufacturing,0.0625
+Massachusetts,Prescription,0.0625
+Massachusetts,Automobile,0.0625
+Massachusetts,Alcohol,0.0625
+Michigan,General,0.06
+Michigan,Food,0
+Michigan,Clothing,0.06
+Michigan,Digital,0
+Michigan,Manufacturing,0.06
+Michigan,Prescription,0
+Michigan,Automobile,0.06
+Michigan,Alcohol,0.06
+Minnesota,General,0.06875
+Minnesota,Food,0
+Minnesota,Clothing,0
+Minnesota,Digital,0.06875
+Minnesota,Manufacturing,0.06875
+Minnesota,Prescription,0.06875
+Minnesota,Automobile,0.06875
+Minnesota,Alcohol,0.06875
+Mississippi,General,0.07
+Mississippi,Food,0.07
+Mississippi,Clothing,0.07
+Mississippi,Digital,0.07
+Mississippi,Manufacturing,0.015
+Mississippi,Prescription,0.07
+Mississippi,Automobile,0.07
+Mississippi,Alcohol,0.07
+Missouri,General,0.04225
+Missouri,Food,0.01225
+Missouri,Clothing,0.04225
+Missouri,Digital,0.04225
+Missouri,Manufacturing,0.04225
+Missouri,Prescription,0.04225
+Missouri,Automobile,0.04225
+Missouri,Alcohol,0.04225
+Montana,General,0
+Montana,Food,0
+Montana,Clothing,0
+Montana,Digital,0
+Montana,Manufacturing,0
+Montana,Prescription,0
+Montana,Automobile,0
+Montana,Alcohol,0
+Nebraska,General,0.055
+Nebraska,Food,0
+Nebraska,Clothing,0.055
+Nebraska,Digital,0
+Nebraska,Manufacturing,0.055
+Nebraska,Prescription,0.055
+Nebraska,Automobile,0.055
+Nebraska,Alcohol,0.055
+Nevada,General,0.0685
+Nevada,Food,0
+Nevada,Clothing,0.0685
+Nevada,Digital,0
+Nevada,Manufacturing,0.0685
+Nevada,Prescription,0.0685
+Nevada,Automobile,0.0685
+Nevada,Alcohol,0.0685
+New Hampshire,General,0
+New Hampshire,Food,0
+New Hampshire,Clothing,0
+New Hampshire,Digital,0
+New Hampshire,Manufacturing,0
+New Hampshire,Prescription,0
+New Hampshire,Automobile,0
+New Hampshire,Alcohol,0
+New Jersey,General,0.06625
+New Jersey,Food,0
+New Jersey,Clothing,0
+New Jersey,Digital,0.06625
+New Jersey,Manufacturing,0.06625
+New Jersey,Prescription,0.06625
+New Jersey,Automobile,0.06625
+New Jersey,Alcohol,0.06625
+New Mexico,General,0.05125
+New Mexico,Food,0
+New Mexico,Clothing,0.05125
+New Mexico,Digital,0.05125
+New Mexico,Manufacturing,0.05125
+New Mexico,Prescription,0
+New Mexico,Automobile,0.05125
+New Mexico,Alcohol,0.05125
+New York,General,0.04
+New York,Food,0
+New York,Clothing,0
+New York,Digital,0.04
+New York,Manufacturing,0.04
+New York,Prescription,0.04
+New York,Automobile,0.04
+New York,Alcohol,0.04
+North Carolina,General,0.0475
+North Carolina,Food,0.02
+North Carolina,Clothing,0.0475
+North Carolina,Digital,0.0475
+North Carolina,Manufacturing,0.0475
+North Carolina,Prescription,0.0475
+North Carolina,Automobile,0.0475
+North Carolina,Alcohol,0.0475
+North Dakota,General,0.05
+North Dakota,Food,0.05
+North Dakota,Clothing,0.05
+North Dakota,Digital,0.05
+North Dakota,Manufacturing,0.05
+North Dakota,Prescription,0.05
+North Dakota,Automobile,0.05
+North Dakota,Alcohol,0.05
+Ohio,General,0.0575
+Ohio,Food,0
+Ohio,Clothing,0.0575
+Ohio,Digital,0.0575
+Ohio,Manufacturing,0.0575
+Ohio,Prescription,0.0575
+Ohio,Automobile,0.0575
+Ohio,Alcohol,0.0575
+Oklahoma,General,0.045
+Oklahoma,Food,0.045
+Oklahoma,Clothing,0.045
+Oklahoma,Digital,0.045
+Oklahoma,Manufacturing,0.045
+Oklahoma,Prescription,0.045
+Oklahoma,Automobile,0.045
+Oklahoma,Alcohol,0.045
+Oregon,General,0
+Oregon,Food,0
+Oregon,Clothing,0
+Oregon,Digital,0
+Oregon,Manufacturing,0
+Oregon,Prescription,0
+Oregon,Automobile,0
+Oregon,Alcohol,0
+Pennsylvania,General,0.06
+Pennsylvania,Food,0
+Pennsylvania,Clothing,0
+Pennsylvania,Digital,0
+Pennsylvania,Manufacturing,0.06
+Pennsylvania,Prescription,0.06
+Pennsylvania,Automobile,0.06
+Pennsylvania,Alcohol,0.06
+Rhode Island,General,0.07
+Rhode Island,Food,0
+Rhode Island,Clothing,0
+Rhode Island,Digital,0.07
+Rhode Island,Manufacturing,0.07
+Rhode Island,Prescription,0.07
+Rhode Island,Automobile,0.07
+Rhode Island,Alcohol,0.07
+South Carolina,General,0.06
+South Carolina,Food,0
+South Carolina,Clothing,0.06
+South Carolina,Digital,0.06
+South Carolina,Manufacturing,0.06
+South Carolina,Prescription,0
+South Carolina,Automobile,0.06
+South Carolina,Alcohol,0.06
+South Dakota,General,0.045
+South Dakota,Food,0.045
+South Dakota,Clothing,0.045
+South Dakota,Digital,0.045
+South Dakota,Manufacturing,0.045
+South Dakota,Prescription,0.045
+South Dakota,Automobile,0.045
+South Dakota,Alcohol,0.045
+Tennessee,General,0.07
+Tennessee,Food,0.04
+Tennessee,Clothing,0.07
+Tennessee,Digital,0.07
+Tennessee,Manufacturing,0.07
+Tennessee,Prescription,0.07
+Tennessee,Automobile,0.07
+Tennessee,Alcohol,0.07
+Texas,General,0.0625
+Texas,Food,0
+Texas,Clothing,0.0625
+Texas,Digital,0.0625
+Texas,Manufacturing,0.0625
+Texas,Prescription,0.0625
+Texas,Automobile,0.0625
+Texas,Alcohol,0.0625
+Utah,General,0.0485
+Utah,Food,0.0175
+Utah,Clothing,0.0485
+Utah,Digital,0.0485
+Utah,Manufacturing,0.0485
+Utah,Prescription,0.0485
+Utah,Automobile,0.0485
+Utah,Alcohol,0.0485
+Vermont,General,0.06
+Vermont,Food,0
+Vermont,Clothing,0
+Vermont,Digital,0.06
+Vermont,Manufacturing,0.06
+Vermont,Prescription,0.06
+Vermont,Automobile,0.06
+Vermont,Alcohol,0.06
+Virginia,General,0.053
+Virginia,Food,0.025
+Virginia,Clothing,0.053
+Virginia,Digital,0.053
+Virginia,Manufacturing,0.053
+Virginia,Prescription,0.053
+Virginia,Automobile,0.053
+Virginia,Alcohol,0.053
+Washington,General,0.065
+Washington,Food,0
+Washington,Clothing,0.065
+Washington,Digital,0.065
+Washington,Manufacturing,0.065
+Washington,Prescription,0.065
+Washington,Automobile,0.065
+Washington,Alcohol,0.065
+Washington D.C.,General,0.06
+Washington D.C.,Food,0
+Washington D.C.,Clothing,0.06
+Washington D.C.,Digital,0.06
+Washington D.C.,Manufacturing,0.06
+Washington D.C.,Prescription,0.06
+Washington D.C.,Automobile,0.06
+Washington D.C.,Alcohol,0.06
+West Virginia,General,0.06
+West Virginia,Food,0.06
+West Virginia,Clothing,0.06
+West Virginia,Digital,0.06
+West Virginia,Manufacturing,0.06
+West Virginia,Prescription,0.06
+West Virginia,Automobile,0.06
+West Virginia,Alcohol,0.06
+Wisconsin,General,0.05
+Wisconsin,Food,0
+Wisconsin,Clothing,0.05
+Wisconsin,Digital,0.05
+Wisconsin,Manufacturing,0.05
+Wisconsin,Prescription,0.05
+Wisconsin,Automobile,0.05
+Wisconsin,Alcohol,0.05
+Wyoming,General,0.04
+Wyoming,Food,0
+Wyoming,Clothing,0.04
+Wyoming,Digital,0.04
+Wyoming,Manufacturing,0.04
+Wyoming,Prescription,0.04
+Wyoming,Automobile,0.04
+Wyoming,Alcohol,0.04

@@ -1,6 +1,37 @@
+body {
+    background-color: #FAFAFF; 
+  }
+
 .page {
     display: grid;
-    grid-template-columns: 1fr 2fr;
-    color: #FAFAFF;
+    grid-template-columns: 2fr 3fr;
+    height: 800px;
 }
+
+.map{
+    background-color: lightpink;
+}
+
+.content{
+    background-color: lightblue;
+    display: grid;
+    grid-template-rows: 2fr 2fr 1fr;
+}
+
+
+.web_intro{
+    background-color: lightpink;
+    margin: 10px;
+}
+
+.entry{
+    background-color: lightpink;
+    margin: 10px;
+}
+
+.tax_paid{
+    background-color: lightpink;
+    margin: 10px;
+}
+
 

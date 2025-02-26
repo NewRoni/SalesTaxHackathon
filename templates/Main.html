@@ -12,12 +12,15 @@
         <div class = "content"> 
             <div class = 'web_intro'> </div>
             <div class = 'entry'> 
-                <form action="/" method="post">
-                    <input type="text" name="State">
-                    <input type="submit" value="Submit">
-                </form>
-                <form action="/" method="post">
-                    <input type="text" name="Price">
+                <form action="/" method="POST">
+                    <label for="State">Enter State</label>
+                    <input type="text" id="State" name="State" required>
+                    <br><br>
+                
+                    <label for="Price">Enter Price($)</label>
+                    <input type="price" id="Price" name="Price" required>
+                    <br><br>
+
                     <input type="submit" value="Submit">
                 </form>
             </div>

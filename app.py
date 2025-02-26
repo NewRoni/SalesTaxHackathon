@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, session
+import flask_session
 
 app = Flask(__name__)
 
@@ -10,12 +11,21 @@ def Main():
     result = None
     if request.method == 'POST':
         session.permanent = True
-        try:
-            text = request.form['State']
-            session['state'] = str(text)
-        except ValueError:
-            result = "invalid input"
-        print(text)
+
+        state = request.form.get('State')
+        price = request.form.get('Price')
+
+        if not state or not price:
+            result = "Please fill blank fields"
+        else:
+            try:
+                price = int(price)
+
+                session['state'] = state
+                session['price'] = price
+            except ValueError:
+                print("Price must be a number")
+        print(session)
     return render_template('Main.html', result=result)
 
 if __name__ == "__main__":

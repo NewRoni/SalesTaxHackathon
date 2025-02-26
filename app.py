@@ -2,7 +2,6 @@ from flask import Flask, render_template, request, session
 app = Flask(__name__)
 
 app.secret_key = "usercrypt"
-session = ["My Tax"]
 
 # Starts a user session and greets the user with an input box
 @app.route('/', methods=['POST', 'GET'])
@@ -12,7 +11,7 @@ def Main():
         session.permanent = True
         try:
             text = request.form['State']
-            text = str(text)
+            session['state'] = str(text)
         except ValueError:
             result = "invalid input"
 

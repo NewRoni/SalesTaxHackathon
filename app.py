@@ -1,15 +1,18 @@
 from flask import Flask, render_template, request
-import sqlite3
 
 app = Flask(__name__)
 
+app.secret_key = "usercrypt"
+
+# Starts a user session and greets the user with an input box
 @app.route('/', methods=['POST', 'GET'])
 def Main():
     result = None
     if request.method == 'POST':
+        session.permanent = True
         try:
             text = request.form['State']
-            text = String(text)
+            session['state'] = str(text)
         except ValueError:
             result = "invalid input"
 

@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, session
 
 app = Flask(__name__)
 
@@ -15,10 +15,8 @@ def Main():
             session['state'] = str(text)
         except ValueError:
             result = "invalid input"
-
+        print(text)
     return render_template('Main.html', result=result)
-
-
 
 if __name__ == "__main__":
     app.run(use_reloader = True, debug=True, host="0.0.0.0")

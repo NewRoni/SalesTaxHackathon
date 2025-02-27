@@ -1,0 +1,18 @@
+{
+    "text_model_dir": "product_clf/text_models",
+    "tax_model_dir": "tax_models",
+    "hp_tuning_dict": {
+        "learning_rate": [0.01, 0.1, 0.2],  
+        "max_depth": [3, 5, 7],  
+        "subsample": [0.6, 0.8, 1.0],        
+        "colsample_bytree": [0.6, 0.8, 1.0],      
+        "n_estimators": [100, 200, 300]
+    },
+    "best_params": {
+        "learning_rate": 0.1,
+        "max_depth": 7,
+        "subsample": 0.6,
+        "colsample_bytree": 0.6,
+        "n_estimators": 300
+    }
+}

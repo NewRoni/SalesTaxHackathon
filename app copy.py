@@ -1,12 +1,12 @@
 from flask import Flask, render_template, request
 from training import load_model
-from inference import predict
+import ml_utilities as ml
 import pandas as pd
 import json
 
 app = Flask(__name__)
-model = load_model('ml_models/model.pkl')
-encoder = load_model('ml_models/encoder.pkl')
+model = load_model('tax_models/model.pkl')
+encoder = load_model('tax_models/encoder.pkl')
 basic_rates = json.load(open('data/basic_rates.json', 'r'))
 
 @app.route('/')
@@ -26,7 +26,7 @@ def inference():
         "product_type": [product_type]
     })
     X = encoder.transform(input_df)
-    tax_rate = predict(X, model)[0]
+    tax_rate =  ml.predict(model, X)[0]
 
     pretax_cost = price * quantity
     final_cost = pretax_cost + (pretax_cost * tax_rate)

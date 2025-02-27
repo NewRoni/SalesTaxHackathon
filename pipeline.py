@@ -20,10 +20,10 @@ if __name__ == "__main__":
     print(f"MSE: {mse:5f} | RMSE: {np.sqrt(mse):.5f}")
     
     # dummy predictions
-    test_input = pd.DataFrame({"state": ["California", "Louisiana"], "product_type": ["Food", "General"]})
+    test_input = pd.DataFrame({"state": ["California", "Louisiana", "Connecticut", "Delaware"], "product_type": ["Food", "General", "Digital", "General"]})
     encoder = load_model('ml_models/encoder.pkl')
     input_arr = encoder.transform(test_input)
     test_pred = predict(input_arr, model)
-    print(test_pred)
+    print(f"Predictions: {test_pred}")
     
     

@@ -14,19 +14,27 @@ def Main():
 
         state = request.form.get('State')
         price = request.form.get('Price')
+        quantity = request.form.get('Quantity')
+        name = request.form.get('Name')
+        product = request.form.get('Product')
 
-        if not state or not price:
+        if not state or not price or not quantity or not name or not product:
             result = "Please fill blank fields"
         else:
             try:
-                price = int(price)
+                price = float(price)
+                quantity = int(quantity)
 
                 session['state'] = state
                 session['price'] = price
+                session['quantity'] = quantity
+                session['name'] = name
+                session['product'] = product
             except ValueError:
-                print("Price must be a number")
+                result = "Ensure Price and quantity are both numbers"
         sessionid = request.cookies.get('session')
         print(sessionid)
+        print(session)
         
     return render_template('Main.html', result=result)
 

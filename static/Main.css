@@ -34,4 +34,50 @@ body {
     margin: 10px;
 }
 
+.page2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 982px;
+}
 
+
+.history {
+    background-color: rgb(79, 128, 208);
+    display: grid;
+    grid-template-rows: 1fr 4fr 1fr;
+
+}
+
+.data_visualisation {
+    background-color: rgb(223, 120, 223);
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+}
+
+.filter {
+    background-color: rgb(79, 128, 208);
+    margin: 10px;
+}
+
+.pie_chart {
+    background-color: rgb(79, 128, 208);
+    margin: 10px;
+
+}
+
+.title {
+    background-color: rgb(223, 120, 223);
+    margin: 10px;
+}
+
+.records {
+    background-color: rgb(223, 120, 223);
+    margin: 10px;
+
+}
+
+.save {
+    background-color: rgb(223, 120, 223);
+    margin: 10px;
+
+}

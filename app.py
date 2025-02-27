@@ -46,7 +46,7 @@ DB_NAME = 'SalesTax.db'
 with sqlite3.connect(DB_NAME) as db:
   pass
 
-# calculation_id = str(uuid.uuid4()) # when form submitted, generate 
+# calculation_id = str(uuid.uuid4())
 
 def CreateHistoryTable():
   conn = sqlite3.connect(DB_NAME)

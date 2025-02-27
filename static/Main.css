@@ -27,6 +27,7 @@ body {
 .entry{
     background-color: lightpink;
     margin: 10px;
+    font-family: Arial;
 }
 
 .tax_paid{

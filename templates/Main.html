@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sales Tax</title>
     <link rel="stylesheet" href="static/Main.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </head>
 
 <body>
@@ -93,11 +94,11 @@
         </div>
         <div class = "map"> </div>
     </div>
-    <div class = 'page2'> 
+    <div class = 'page2' id="capture" > 
         <div class = 'history'> 
             <div class = 'title'>  <h1> History </h1> </div>
             <div class = 'records'> </div>
-            <div class = 'save'> </div>
+            <div class = 'save'> <button id="captureBtn">Capture Screenshot</button> </div>
         </div>
         <div class = 'data_visualisation'> 
             <div class = 'filter'> </div>
@@ -137,6 +138,19 @@
             document.getElementById('myChart'),
             config
         );
+    </script>
+
+    <!-- User Save -->
+    <script>
+        document.getElementById("captureBtn").addEventListener("click", function () {
+            html2canvas(document.getElementById("capture")).then(canvas => {
+                let img = canvas.toDataURL("image/png"); // Convert to image
+                let link = document.createElement("a");
+                link.href = img;
+                link.download = "screenshot.png"; 
+                link.click(); // Trigger download
+            });
+        });
     </script>
 </body>
 </html>

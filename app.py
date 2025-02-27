@@ -25,7 +25,7 @@ def Main():
                 session['price'] = price
             except ValueError:
                 print("Price must be a number")
-        print(session)
+        
     return render_template('Main.html', result=result)
 
 if __name__ == "__main__":

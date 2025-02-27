@@ -1,18 +1,21 @@
 from flask import Flask, render_template, request, session
 import flask_session
 import sqlite3
-import uuid
+import logging
+
 
 app = Flask(__name__)
 
 app.secret_key = "usercrypt"
-
+logging.basicConfig(level=logging.DEBUG)
 # Starts a user session and greets the user with an input box
 @app.route('/', methods=['POST', 'GET'])
 def Main():
     result = None
     if request.method == 'POST':
+        logging.debug("Entered Main")
         session.permanent = True
+      
 
         state = request.form.get('state')
         price = request.form.get('Price')
@@ -25,8 +28,8 @@ def Main():
             try:
 
                 price = float(price)
-                quantity = int(price)
-                
+                quantity = int(quantity)
+
                 session['state'] = state
                 session['price'] = price
                 session['quantity'] = quantity
@@ -34,11 +37,14 @@ def Main():
     
             except ValueError:
                 result = "Ensure Price and quantity are both numbers"
+        logging.debug("Submitted Form")
+        print(session)
         sessionid = request.cookies.get('session')
         print(sessionid)
         print(session)
         
     return render_template('Main.html', result=result)
+
 
 
 DB_NAME = 'SalesTax.db'

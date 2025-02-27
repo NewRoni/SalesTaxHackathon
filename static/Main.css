@@ -82,3 +82,8 @@ body {
     margin: 10px;
 
 }
+
+#myChart {
+    max-width: 100%;
+    max-height: 100%;
+}

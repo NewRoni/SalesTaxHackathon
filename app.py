@@ -18,9 +18,8 @@ def Main():
         price = request.form.get('Price')
         quantity = request.form.get('Quantity')
         name = request.form.get('Name')
-        product = request.form.get('Product')
 
-        if not state or not price or not quantity or not name or not product:
+        if not state or not price or not quantity or not name:
             result = "Please fill blank fields"
         else:
             try:
@@ -31,7 +30,7 @@ def Main():
                 session['price'] = price
                 session['quantity'] = quantity
                 session['name'] = name
-                session['product'] = product
+    
             except ValueError:
                 result = "Ensure Price and quantity are both numbers"
         sessionid = request.cookies.get('session')

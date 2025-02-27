@@ -25,6 +25,8 @@ def Main():
                 session['price'] = price
             except ValueError:
                 print("Price must be a number")
+        sessionid = request.cookies.get('session')
+        print(sessionid)
         
     return render_template('Main.html', result=result)
 

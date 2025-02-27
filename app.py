@@ -14,7 +14,7 @@ def Main():
     if request.method == 'POST':
         session.permanent = True
 
-        state = request.form.get('State')
+        state = request.form.get('state')
         price = request.form.get('Price')
         quantity = request.form.get('Quantity')
         name = request.form.get('Name')
@@ -23,9 +23,10 @@ def Main():
             result = "Please fill blank fields"
         else:
             try:
-                price = float(price)
-                quantity = int(quantity)
 
+                price = float(price)
+                quantity = int(price)
+                
                 session['state'] = state
                 session['price'] = price
                 session['quantity'] = quantity

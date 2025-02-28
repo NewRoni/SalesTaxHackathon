@@ -13,81 +13,81 @@
         <div class = "content"> 
             <div class = 'web_intro'> 
                 <h1> US Sales Tax Calculator </h1>
-                <p> lorem ipsum ai ai ipsum ai predicative</p>
+                <p> We will leverage AI to
+                    automatically categorise your product and determine the correct sales 
+                    tax rate based on the product type and the state of purchase</p>
             </div>
             <div class = 'entry'> 
-                <form action="/" method="POST">
+                <form action = '/' method = 'POST'>
+                <div class = 'product_nd_type'> 
                     <label for="Name">Enter Name of Item</label>
-                    <input type="text" id="Name" name="Name" required>
-                    <br><br>
-
+                    <input type="text" id="Name" name="Name" required> 
+                </div>
+                <div class = 'price_nd_quantity'> 
                     <label for="Price">Enter Price</label>
                     <input type="number" id="Price" name="Price" step="0.01" required>
-                    <br><br>
 
                     <label for="Quantity">Enter Quantity of Item</label>
                     <input type="number" id="quantity" name="Quantity" required>
-                    <br><br>
+                </div>
 
-                    <label for="State">Enter State</label>
-                    <select name="state" id="state">
-                        <option value="null">------------------</option>
-                        <option value="alabama">Alabama</option>
-                        <option value="alaska">Alaska</option>
-                        <option value="arizona">Arizona</option>
-                        <option value="arkansas">Arkansas</option>
-                        <option value="california">California</option>
-                        <option value="colorado">Colorado</option>
-                        <option value="connecticut">Conneticut</option>
-                        <option value="delawre">Delaware</option>
-                        <option value="florida">Florida</option>
-                        <option value="georgia">Georgia</option>
-                        <option value="hawaii">Hawaii</option>
-                        <option value="idaho">Idaho</option>
-                        <option value="illinois">Illinois</option>
-                        <option value="indiana">Indiana</option>
-                        <option value="iowa">Iowa</option>
-                        <option value="kansas">Kansas</option>
-                        <option value="kentucky">Kentucky</option>
-                        <option value="louisiana">Louisiana</option>
-                        <option value="maine">Maine</option>
-                        <option value="maryland">Maryland</option>
-                        <option value="massachusetts">Massachusetts</option>
-                        <option value="michigan">Michigan</option>
-                        <option value="minnesota">Minnesota</option>
-                        <option value="mississipi">Mississipi</option>
-                        <option value="missouri">Missouri</option>
-                        <option value="montana">Montana</option>
-                        <option value="nebraska">Nebraska</option>
-                        <option value="nevada">Nevada</option>
-                        <option value="new hampshire">New Hampshire</option>
-                        <option value="new jersey">New Jersey</option>
-                        <option value="new mexico">New Mexico</option>
-                        <option value="new york">New York</option>
-                        <option value="north carolina">North Carolina</option>
-                        <option value="north dakota">North Dakota</option>
-                        <option value="ohio">Ohio</option>
-                        <option value="oklahoma">Oklahoma</option>
-                        <option value="oregon">Oregon</option>
-                        <option value="pennsylvania">Pennsylvania</option>
-                        <option value="rhode island">Rhode Island</option>
-                        <option value="south carolina">South Carolina</option>
-                        <option value="south dakota">South Dakota</option>
-                        <option value="tennessee">Tennessee</option>
-                        <option value="texas">Texas</option>
-                        <option value="utah">Utah</option>
-                        <option value="vermont">Vermont</option>
-                        <option value="virginia">Virginia</option>
-                        <option value="washington">Washington</option>
-                        <option value="west virginia">West Virginia</option>
-                        <option value="wisconsin">Wisconsin</option>
-                        <option value="wyoming">Wyoming</option>
-                    </select>
-                    <br><br>
-                
-                
-
-                    <input type="submit" value="Submit">
+            </div>
+            <div class = 'destination'> <label for="State">Enter State</label>
+                <select name="state" id="state">
+                    <option value="null">------------------</option>
+                    <option value="alabama">Alabama</option>
+                    <option value="alaska">Alaska</option>
+                    <option value="arizona">Arizona</option>
+                    <option value="arkansas">Arkansas</option>
+                    <option value="california">California</option>
+                    <option value="colorado">Colorado</option>
+                    <option value="connecticut">Conneticut</option>
+                    <option value="delawre">Delaware</option>
+                    <option value="florida">Florida</option>
+                    <option value="georgia">Georgia</option>
+                    <option value="hawaii">Hawaii</option>
+                    <option value="idaho">Idaho</option>
+                    <option value="illinois">Illinois</option>
+                    <option value="indiana">Indiana</option>
+                    <option value="iowa">Iowa</option>
+                    <option value="kansas">Kansas</option>
+                    <option value="kentucky">Kentucky</option>
+                    <option value="louisiana">Louisiana</option>
+                    <option value="maine">Maine</option>
+                    <option value="maryland">Maryland</option>
+                    <option value="massachusetts">Massachusetts</option>
+                    <option value="michigan">Michigan</option>
+                    <option value="minnesota">Minnesota</option>
+                    <option value="mississipi">Mississipi</option>
+                    <option value="missouri">Missouri</option>
+                    <option value="montana">Montana</option>
+                    <option value="nebraska">Nebraska</option>
+                    <option value="nevada">Nevada</option>
+                    <option value="new hampshire">New Hampshire</option>
+                    <option value="new jersey">New Jersey</option>
+                    <option value="new mexico">New Mexico</option>
+                    <option value="new york">New York</option>
+                    <option value="north carolina">North Carolina</option>
+                    <option value="north dakota">North Dakota</option>
+                    <option value="ohio">Ohio</option>
+                    <option value="oklahoma">Oklahoma</option>
+                    <option value="oregon">Oregon</option>
+                    <option value="pennsylvania">Pennsylvania</option>
+                    <option value="rhode island">Rhode Island</option>
+                    <option value="south carolina">South Carolina</option>
+                    <option value="south dakota">South Dakota</option>
+                    <option value="tennessee">Tennessee</option>
+                    <option value="texas">Texas</option>
+                    <option value="utah">Utah</option>
+                    <option value="vermont">Vermont</option>
+                    <option value="virginia">Virginia</option>
+                    <option value="washington">Washington</option>
+                    <option value="west virginia">West Virginia</option>
+                    <option value="wisconsin">Wisconsin</option>
+                    <option value="wyoming">Wyoming</option>
+                </select>
+            
+                <input type="submit" value="Submit">
                 </form>
             </div>
             <div class = 'tax_paid'> </div>

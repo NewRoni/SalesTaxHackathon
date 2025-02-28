@@ -13,9 +13,9 @@ body {
 }
 
 .content{
-    background-color: lightblue;
     display: grid;
-    grid-template-rows: 2fr 2fr 1fr;
+    grid-template-rows: 1fr 2fr 2fr 1fr;
+    padding-left: 60px;
 }
 
 
@@ -24,10 +24,53 @@ body {
     margin: 10px;
 }
 
-.entry{
-    background-color: lightpink;
+.entry {
+    background-color: white;
     margin: 10px;
     font-family: Arial;
+    border-radius: 3vmin;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border-style: solid;
+    border-color: rgba(231, 231, 231, 0.8);
+    border-width: 2px;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    overflow: hidden; /* Prevent overflow */
+}
+
+form {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    display: contents; /* Make the form behave as part of the grid */
+}
+
+.product_nd_type {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background-color: lightblue; /* Add some padding for spacing */
+}
+
+.price_nd_quantity {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background-color: lightpink;
+}
+
+.destination {
+    background-color: lightblue;
+
 }
 
 .tax_paid{
@@ -45,7 +88,7 @@ body {
 .history {
     background-color: rgb(79, 128, 208);
     display: grid;
-    grid-template-rows: 1fr 4fr 1fr;
+    grid-template-rows: 1fr 4fr .5fr;
 
 }
 
@@ -80,10 +123,16 @@ body {
 .save {
     background-color: rgb(223, 120, 223);
     margin: 10px;
-
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #myChart {
     max-width: 100%;
     max-height: 100%;
+}
+
+#captureBtn{
+    margin-right: auto; 
 }

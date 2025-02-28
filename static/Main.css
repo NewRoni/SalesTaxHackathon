@@ -136,3 +136,7 @@ form {
 #captureBtn{
     margin-right: auto; 
 }
+
+.scene-container .clickable {
+    cursor: pointer;
+  }

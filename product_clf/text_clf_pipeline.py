@@ -55,7 +55,7 @@ if __name__ == "__main__":
     # dummy predictions
     input_df = pd.DataFrame({"product_name": ["Manuka honey", "Vegetable oil", "Nike sneakers", "Boots handcream", "Sony headphones", "ibuprofen"]})
     input_arr = preprocess(input_df, mode="inference")
-    preds = model.predict(input_arr)
+    preds = ml.predict(model, input_arr)
     for i, pred in enumerate(preds):
         print(f"{input_df.iloc[i]['product_name']} -> {class_names[pred]}")
     

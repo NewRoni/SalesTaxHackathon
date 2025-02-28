@@ -6,6 +6,7 @@
     <title>Sales Tax</title>
     <link rel="stylesheet" href="static/Main.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 
 <body>
@@ -25,7 +26,7 @@
                 </div>
                 <div class = 'price_nd_quantity'> 
                     <label for="Price">Enter Price</label>
-                    <input type="number" id="Price" name="Price" step="0.01" required>
+                    <input type="number" id="Price" name="Price" step="0.01" min = '0' required>
 
                     <label for="Quantity">Enter Quantity of Item</label>
                     <input type="number" id="quantity" name="Quantity" min = '0'>
@@ -42,7 +43,7 @@
                     <option value="california">California</option>
                     <option value="colorado">Colorado</option>
                     <option value="connecticut">Conneticut</option>
-                    <option value="delawre">Delaware</option>
+                    <option value="delaware">Delaware</option>
                     <option value="florida">Florida</option>
                     <option value="georgia">Georgia</option>
                     <option value="hawaii">Hawaii</option>
@@ -92,7 +93,9 @@
             </div>
             <div class = 'tax_paid'> </div>
         </div>
-        <div class = "map"></div>
+        <div class = "map">
+            <script src="static/globe.js"></script>
+        </div>
     </div>
     <div class = 'page2' id="capture" > 
         <div class = 'history'> 
@@ -150,6 +153,47 @@
                 link.download = "screenshot.png"; 
                 link.click(); // Trigger download
             });
+        });
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Get the map div
+            const mapDiv = document.querySelector('.map');
+    
+            // Check if the map div exists
+            if (!mapDiv) {
+                console.error("Map div not found!");
+                return;
+            }
+    
+            // Set up the Three.js scene
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, mapDiv.clientWidth / mapDiv.clientHeight, 0.1, 1000);
+            const renderer = new THREE.WebGLRenderer();
+            renderer.setSize(mapDiv.clientWidth, mapDiv.clientHeight);
+            mapDiv.appendChild(renderer.domElement);
+    
+            // Create a sphere (globe)
+            const geometry = new THREE.SphereGeometry(2, 32, 32);
+            const material = new THREE.MeshBasicMaterial({
+                color: 0x0000ff,
+                wireframe: true // Use wireframe for a simple look
+            });
+            const globe = new THREE.Mesh(geometry, material);
+            scene.add(globe);
+    
+            // Position the camera
+            camera.position.z = 5;
+    
+            // Animation loop
+            function animate() {
+                requestAnimationFrame(animate);
+                globe.rotation.x += 0.01;
+                globe.rotation.y += 0.01;
+                renderer.render(scene, camera);
+            }
+    
+            animate();
         });
     </script>
 </body>

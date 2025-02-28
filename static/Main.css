@@ -1,6 +1,19 @@
 body {
-    background-color: #FAFAFF; 
+    background-color: #FAFAFF;
+    font-family: 'Inter';
   }
+
+h1 {
+    font-weight: 700;
+    font-size: 44px;
+    /* text-shadow: 0px 1px 7px rgba(0, 0, 0, .15); */
+    filter: drop-shadow(0px 1px 7px rgba(0, 0, 0, 0.12));
+}
+
+p {
+    text-shadow: 0px 1px 7px rgba(0, 0, 0, .08);
+}
+
 
 .page {
     display: grid;
@@ -8,9 +21,6 @@ body {
     height: 982px;
 }
 
-.map{
-    background-color: lightpink;
-}
 
 .content{
     display: grid;
@@ -20,13 +30,13 @@ body {
 
 
 .web_intro{
-    background-color: lightpink;
     margin: 10px;
 }
 
 .entry {
     background-color: white;
     margin: 10px;
+    margin-left: 0px;
     font-family: Arial;
     border-radius: 3vmin;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
@@ -76,6 +86,10 @@ form {
 .tax_paid{
     background-color: lightpink;
     margin: 10px;
+}
+
+.map{
+    background-color: lightpink;
 }
 
 .page2 {

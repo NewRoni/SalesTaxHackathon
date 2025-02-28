@@ -18,7 +18,7 @@ p {
 .page {
     display: grid;
     grid-template-columns: 2fr 3fr;
-    height: 982px;
+    min-height: 982px;
 }
 
 

@@ -19,19 +19,18 @@
                 <h1> US Sales Tax Calculator </h1>
                 <p> We leverage AI to
                     automatically categorise your product and determine the correct sales 
-                    tax rate based on the product type and the state of purchase</p>
+                    tax rate based on the product type and the state of purchase.</p>
             </div>
             <div class = 'entry'> 
                 <form id='taxForm'>
                 <div class = 'product_nd_type'> 
-                    <label for="Name">Enter Name of Item</label>
+                    <label for="Name" class = 'input_label' >Product</label>
                     <input type="text" id="itemName" name="itemName" required> 
                 </div>
                 <div class = 'price_nd_quantity'> 
-                    <label for="price">Enter Price</label>
-                    <input type="number" id="price" name="price" step="0.01" min = '0' required>
+                    <input type="number" placeholder = '$' id="price" name="price" step="0.01" min = '0' required>
 
-                    <label for="quantity">Enter Quantity of Item</label>
+                    <label for="quantity" class = 'input_label' > Quantity </label>
                     <input type="number" id="quantity" name="quantity" min = '0'>
                 </div>
 

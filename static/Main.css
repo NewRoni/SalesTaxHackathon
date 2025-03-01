@@ -88,7 +88,7 @@ form {
 }
 
 .map{
-    background-color: lightpink;
+    background-color: #FAFAFF;
 }
 
 .page2 {
@@ -180,7 +180,7 @@ input[type="number"] {
 
 .map path {
     fill: #ccc; /* Default state color */
-    stroke: #fff; /* State borders */
+    stroke: #000000; /* State borders */
     stroke-width: 1;
     transition: fill 0.3s ease;
 }
@@ -191,4 +191,10 @@ input[type="number"] {
 
 .map path.highlight {
     fill: #ff0000; /* Highlighted state color */
+}
+
+.highlight {
+    fill: #818589; /* Change this to any color you want for highlighting */
+    stroke: #000; /* Optional: Change the stroke color */
+    stroke-width: 2; /* Optional: Change the stroke width */
 }

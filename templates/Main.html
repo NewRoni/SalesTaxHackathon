@@ -11,6 +11,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://threejs.org/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@latest/examples/js/controls/OrbitControls.js"></script>
 
 </head>
 
@@ -99,7 +100,6 @@
             <div class = 'tax_paid'> </div>
         </div>
         <div class = "map">
-            <script src="static/globe.js"></script>
         </div>
     </div>
     <div class = 'page2' id="capture" > 
@@ -191,24 +191,25 @@
             const usaLONG = -95.7129
             let theta = (usaLONG + 180) * (Math.PI / 180);
             let phi = (90 - usaLAT) * (Math.PI / 180);
-            const cameraDistance = 8;
+            const cameraDistance = 7;
+
             
-    
-            // Animation loop
+            cameraPosition.setFromSphericalCoords(cameraDistance, phi, theta);
+            camera.position.copy(cameraPosition);
+            camera.lookAt(new THREE.Vector3(0, 0, 0))
+
+
             function animate() {
                 requestAnimationFrame(animate);
-                
-                theta += 0.001;
-                cameraPosition.setFromSphericalCoords(cameraDistance, phi, theta);
-                camera.position.copy(cameraPosition);
-                camera.lookAt(scene.position);
-                // globe.rotation.x += 0.005;
-                // globe.rotation.y += 0.005;
+
+                // Render the scene
                 renderer.render(scene, camera);
             }
-    
+
             animate();
         });
+
+
     </script>
 </body>
 </html>

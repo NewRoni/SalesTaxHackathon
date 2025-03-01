@@ -11,6 +11,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src = "static/ml_function.js"></script>
 </head>
 
 <body>
@@ -22,23 +23,24 @@
                     automatically categorise your product and determine the correct sales 
                     tax rate based on the product type and the state of purchase.</p>
             </div>
+            <form id='taxForm'>
             <div class = 'entry'> 
-                <form id='taxForm'>
                 <div class = 'product_nd_type'> 
                     <label for="itemName" class = 'input_label'>Product</label>
-                    <input type="text" id="itemName" name="itemName" required> 
+                    <input type="text" id="itemName" name="itemName" required>
+                    <input type="text" id="product_type" placeholder = 'Product Type' name="product_type">
+                    <button type="button" id="generateProductType">Generate</button>
                 </div>
                 <div class = 'price_nd_quantity'> 
                     <input type="number" placeholder = '$' id="price" name="price" step="0.01" min = '0' required>
-
-                    <label for="quantity" class = 'input_label'> Quantity </label>
                     <input type="number" id="quantity" name="quantity" min = '0'>
+                    <label for="quantity" class = 'input_label'> Quantity </label>
                 </div>
 
             </div>
-            <div class = 'destination' for = 'state'> <label for="State">Enter State</label>
-                <select name="state" id="state">
-                    <option value="null">------------------</option>
+            <div class = 'destination' for = 'state'> 
+                <select placeholder = 'Destination' name="state" id="state">
+                    <option value="null"> Destination </option>
                     <option value="alabama">Alabama</option>
                     <option value="alaska">Alaska</option>
                     <option value="arizona">Arizona</option>
@@ -90,12 +92,13 @@
                     <option value="wisconsin">Wisconsin</option>
                     <option value="wyoming">Wyoming</option>
                 </select>
-                <label for="product_type">Product Type:</label>
-                    <input type="text" id="product_type" name="product_type">
-                    <button type="button" id="generateProductType">Generate</button>
-                <input type="submit" value="Submit" id = 'submitButton'>
-                </form>
+                <div class="final_submit">
+                    <img src="/static/calc.png"/>
+                    <input class="final_submit_btn" type="submit" id="submitButton" />
+                  </div>
             </div>
+            <div class = 'seperating_line'> </div>
+            </form>
             <div class = 'tax_paid' id="taxResult"> </div>
         </div>
         <div class = "map">
@@ -116,80 +119,6 @@
         </div>
     </div>
 
-    <!-- ml -->
-    <script>
-        $(document).ready(function() {
-            $("#generateProductType").click(function() {
-                var productName = $("#itemName").val();
-                $.ajax({
-                    url: "/text_inference",
-                    type: "POST",
-                    data: { product_name: productName },
-                    success: function(response) {
-                        console.log(response)
-                        $("#product_type").val(response);
-                    },
-                    error: function(xhr, status, error) {
-                        console.error("Error generating product type:", error);
-                        alert('Error generating product type.');
-                    }
-                });
-            });
-
-            $("#submitButton").click(function(e) {
-                e.preventDefault();
-                var formData = $("#taxForm").serialize();
-                console.log(formData)
-                $.ajax({
-                    url: "/tax_inference",
-                    type: "POST",
-                    data: formData,
-                    success: function(response) {
-                        if (response.error) {
-                            $("#taxResult").html("Error: " + response.error);
-                        } else {
-                            $("#taxResult").html("Tax Rate: " + response.tax_rate +
-                                                "<br>Total Tax: " + response.total_tax +
-                                                "<br>Total Price: " + response.total_price);
-                        }
-                        success = saveCalculation(response)
-                        $("#taxForm")[0].reset(); // Clear the form
-                    },
-                    error: function(xhr, status, error) {
-                        console.error("Error calculating tax:", error);
-                        console.error("status:", status);
-                        console.error("responseText:", xhr.responseText);
-                        alert('Error calculating tax: ' + xhr.responseText);
-                    }
-                });
-            });
-            function saveCalculation(calculationData) {
-                const data = {
-                    "itemName": $("#itemName").val(),
-                    "price": $("#price").val(),
-                    "quantity": $("#quantity").val(),
-                    "state": $("#state").val(),
-                    "product_type": $("#product_type").val(),
-                    "tax_paid": String(calculationData.total_tax)
-                }
-                $.ajax({
-                    url: "/save_calculation",
-                    type: "POST",
-                    data: JSON.stringify(data),
-                    contentType: "application/json",
-                    success: function(response) {
-                        console.log("Calculation saved to database:", response);
-                    },
-                    error: function(xhr, status, error) {
-                        console.error("Error saving calculation:", xhr, status, error);
-                        alert('Error saving calculation: ' + xhr.responseText);
-                    }
-                });
-            }
-        });
-
-        
-    </script>
 
     <!-- Pie Chart -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

@@ -6,3 +6,8 @@ response = requests.post(f"{URL}/inference", data={"state": "connecticut",
                                                    "quantity": "2",
                                                    "product_type": "digital"})
 print(response.content)
+
+response = requests.post(f"{URL}/inference", data={"state": "connecticut",
+                                                   "price": "100",
+                                                   "quantity": "2",
+                                                   "product_type": "digital"})

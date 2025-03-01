@@ -10,15 +10,15 @@ if __name__ == "__main__":
     train_df, val_df = ml.splitdata(data)
     
     # train
-    # X_train, y_train = process(train_df)
-    # model = train(X_train, y_train)
-    # ml.save_model(model, 'tax_models/model.pkl')
+    X_train, y_train = process(train_df)
+    model = train(X_train, y_train, hp_tuning=True)
+    ml.save_model(model, 'tax_models/model4.pkl')
     
     # evaluate
-    model = ml.load_model('tax_models/model.pkl')
+    model = ml.load_model('tax_models/model4.pkl')
     X_val, y_val = process(val_df, train=False)
     mse = ml.evaluate(model, X_val, y_val, mean_squared_error)
-    print(f"MSE: {mse:5f} | RMSE: {np.sqrt(mse):.5f}")
+    print(f"MSE: {mse:.5f} | RMSE: {np.sqrt(mse):.5f}")
     
     # dummy predictions
     test_input = pd.DataFrame({"state": ["California", "Louisiana", "Connecticut", "Delaware"], "product_type": ["Food", "General", "Digital", "General"]})

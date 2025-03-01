@@ -19,41 +19,30 @@ lb_encoder = load_model(f"{config['text_model_dir']}/label_encoder.pkl")
 app = Flask(__name__)
 
 app.secret_key = "usercrypt"
+session_id = ''
+
+def check_session(f):
+    def decorated_function(*args, **kwargs):
+        if 'session_id' not in session:
+            session['session_id'] = str(uuid.uuid4()) # generate session id
+            session.permanent = True
+            # CreateHistoryTable()
+        return f(*args, **kwargs)
+    return decorated_function
 
 @app.route('/', methods=['POST', 'GET'])
+@check_session
 def Main():
-    result = None
-    if request.method == 'POST':
-        session.permanent = True
-      
-        state = request.form.get('state')
-        price = request.form.get('Price')
-        quantity = request.form.get('Quantity')
-        name = request.form.get('Name')
-
-        if not state or not price or not quantity or not name:
-            result = "Please fill blank fields"
-        else:
-            try:
-                price = float(price)
-                quantity = int(quantity)
-
-                session['state'] = state
-                session['price'] = price
-                session['quantity'] = quantity
-                session['name'] = name
-    
-            except ValueError:
-                result = "Ensure Price and quantity are both numbers"
-        
-    return render_template('main_update.html', result=result)
+    global session_id
+    session_id = session['session_id']
+    return render_template('main_update.html')
 
 @app.route('/save_calculation', methods=['POST'])
 def save_calculation():
     if request.method == "POST":
         data = request.get_json()
         calculation_id = str(uuid.uuid4())
-        user_session = request.cookies.get('session')
+        global session_id
         
         itemName = data.get('itemName')
         price = data.get('price')
@@ -66,7 +55,7 @@ def save_calculation():
             return jsonify({'error': 'Missing data in request'}), 400
 
         try:
-            TaxHistory(calculation_id, user_session, state, itemName, product_type, float(price), int(quantity), float(tax_paid))
+            TaxHistory(calculation_id, session_id, state, itemName, product_type, float(price), int(quantity), float(tax_paid))
             return jsonify({'message': 'Calculation saved successfully!'})
         except Exception as e:
             return jsonify({'error': f'Database error: {e}'}), 500
@@ -158,11 +147,6 @@ def DeleteHistoryTable():
   print('History Table Deleted')
 
 
-
-#DeleteHistoryTable()
-#CreateHistoryTable()
-#TaxHistory(calculation_id,'eyJfcGVybWFuZW50Ijp0cnVlLCJwcmljZSI6MTksInN0YXRlIjoiT2hpbyJ9.Z8B7Zw.S_EX5r9nTm3xvBKkUqQsswKE0Wk', 'Ohio', 'gift card', 'inheritance', 19, 2, 1.99)
-#CallHistory()
 
 if __name__ == "__main__":
     app.run(use_reloader = True, debug=True, host="0.0.0.0")

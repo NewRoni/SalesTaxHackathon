@@ -145,7 +145,7 @@
                                                 "<br>Total Tax: " + response.total_tax +
                                                 "<br>Total Price: " + response.total_price);
                         }
-                        saveCalculation(response)
+                        success = saveCalculation(response)
                         $("#taxForm")[0].reset(); // Clear the form
                     },
                     error: function(xhr, status, error) {

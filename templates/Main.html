@@ -26,15 +26,14 @@
             <form id='taxForm'>
             <div class = 'entry'> 
                 <div class = 'product_nd_type'> 
-                    <label for="itemName" class = 'input_label'>Product</label>
+                    <label for="itemName" class = 'input_label_name'>Product</label>
                     <input type="text" id="itemName" name="itemName" required>
-                    <input type="text" id="product_type" placeholder = 'Product Type' name="product_type">
-                    <button type="button" id="generateProductType">Generate</button>
                 </div>
                 <div class = 'price_nd_quantity'> 
-                    <input type="number" placeholder = '$' id="price" name="price" step="0.01" min = '0' required>
+                    <input type="text" placeholder = '$' id="price" name="price" step="0.01" min = '0' required>
+                    <div class = 'ximg'>  <img src="/static/x@3x.png"/> </div>
                     <input type="number" id="quantity" name="quantity" min = '0'>
-                    <label for="quantity" class = 'input_label'> Quantity </label>
+                    <label for="quantity" class = 'input_label'> quantity </label>
                 </div>
 
             </div>

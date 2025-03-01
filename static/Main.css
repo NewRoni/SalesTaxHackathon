@@ -16,21 +16,13 @@ p {
 }
 
 
-
-.input_label{
-    color: #888888;
-
-}
-
 .page {
     display: grid;
     grid-template-columns: 2fr 3fr;
-    min-height: 982px;
+    min-height: 862px;
 }
 
-
 .content{
-
     padding-left: 60px;
 }
 
@@ -56,9 +48,6 @@ p {
     padding: 10px;
 }
 
-#generateProductType{
-
-}
 
 #product_type{
     display: inline;
@@ -66,13 +55,81 @@ p {
 
 
 .product_nd_type {
-    background-color: lightblue;
-    height: 57px;
+    /* background-color: lightblue; */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 10px;
+    border-bottom: 1px solid rgba(217, 217, 217, 0.5);
 }
 
+.input_label_name {
+    color: #888888;
+    display: block;
+    margin-top: 4px;
+    font-size: 16px;
+    text-shadow: 0px 1px 7px rgba(0, 0, 0, .08);
+    letter-spacing: 0.03em;
+}
+
+#itemName {
+    width: 244px;
+    height: 43px;
+    padding: 10px;
+    border: 1.5px solid #E7E7E7;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+    margin-top: 7px;
+}
+
+.input_label {
+    color: #888888;
+    display: block; /* Makes sure the label is displayed as a block element */
+    font-size: 14px;
+    text-shadow: 0px 1px 7px rgba(0, 0, 0, .08);
+    margin-top: 0; /* Adjusts the label margin */
+    margin-bottom: 0; /* Removes any bottom margin */
+    align-self: center; /* Vertically aligns the label in the middle */
+    letter-spacing: 0.03em;
+}
+
+#price {
+    width: 168px; /* Adjust the width of the price input */
+    height: 43px;
+    padding: 10px;
+    border: 1.5px solid #E7E7E7;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 20px;
+    color: #888888;
+    text-shadow: 0px 1px 7px rgba(0, 0, 0, .08);
+    margin-right: 22px;
+}
+
+#quantity {
+    width: 68px;
+    height: 33px;
+    padding: 10px;
+    border: 1.5px solid #E7E7E7;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+    margin-right: 5px;
+}
+
+.ximg img {
+    width: 16px;
+    height: 16px;
+    margin-right: 22px;
+  }
+
 .price_nd_quantity {
-    height: 57px;
-    background-color: lightpink;
+    /* background-color: lightpink; */
+    display: flex; 
+    align-items: center; 
+    padding: 10px;
 }
 
 .destination {
@@ -98,14 +155,16 @@ p {
     background-color: #FFFFFF;
     margin-right: 10px;
     text-shadow: 0px 1px 7px rgba(0, 0, 0, .08);
-    font-size: 24px;
-    color: #C7C7C7;
+    font-size: 22px;
+    color: #888888;
     appearance: none; 
+    cursor: text;
 }
 
+
 .final_submit{
-    height: 84px;
-    width: 84px;
+    height: 80px;
+    width: 80px;
     border: 2px solid rgba(231, 231, 231, .8);
     border-radius: 20px;
     background-color: #FFFFFF;
@@ -114,6 +173,7 @@ p {
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 }
 
 .final_submit img {
@@ -122,11 +182,22 @@ p {
   }
 
 
+  .seperating_line {
+    border-top: 2px solid #e7e7e7; /* Creates a horizontal line at the top */
+    width: 97%; /* Makes the line span the full width of its container */
+}
+
 .tax_paid{
-    background-color: lightpink;
+    background-color: white;
     margin: 10px;
     margin-left: 0px;
-    height: 250px;
+    margin-top: 25px;
+    margin-bottom: 0px;
+    border-radius: 20px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    display: grid;
+    height: 176px;
+    padding: 10px;
 }
 
 .map{
@@ -163,17 +234,6 @@ p {
     margin: 10px;
 }
 
-input[type="text"],
-input[type="number"] {
-    width: 220px;
-    height: 43px;
-    padding: 10px;
-    margin: 8px 0;
-    border: 1px solid #E7E7E7;
-    border-radius: 5px;
-    box-sizing: border-box;
-    font-size: 20px;
-}
 
 .title {
     background-color: rgb(223, 120, 223);

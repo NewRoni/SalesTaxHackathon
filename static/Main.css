@@ -133,6 +133,15 @@ input[type="number"] {
     transition: border-color 0.3s ease;
 }
 
+input[list="stateList"] {
+    width: 200px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
 .title {
     background-color: rgb(223, 120, 223);
     margin: 10px;

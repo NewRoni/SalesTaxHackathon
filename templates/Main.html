@@ -164,6 +164,8 @@
             const renderer = new THREE.WebGLRenderer();
             renderer.setSize(mapDiv.clientWidth, mapDiv.clientHeight);
             mapDiv.appendChild(renderer.domElement);
+
+            renderer.setClearColor(0xffffff);
     
             // Create a sphere (globe)
             const geometry = new THREE.SphereGeometry(2, 32, 32);

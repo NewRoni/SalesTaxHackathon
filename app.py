@@ -103,7 +103,7 @@ def inference():
         print(f"<<Total: {total_price}>>")
         
         return jsonify({
-                'tax_rate': f"{tax_rate * 100:.2f}%",
+                'tax_rate': f"{tax_rate * 100:.2f}", # tax rate in percent
                 'total_tax': f"{total_tax:.2f}",
                 'total_price': f"{total_price:.2f}"
             })

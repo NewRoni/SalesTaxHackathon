@@ -36,15 +36,16 @@ p {
     background-color: white;
     margin: 10px;
     margin-left: 0px;
-    font-family: Arial;
-    border-radius: 3vmin;
+    border-radius: 20px;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     border-style: solid;
     border-color: rgba(231, 231, 231, 0.8);
     border-width: 2px;
     display: grid;
     grid-template-rows: 1fr 1fr;
-    overflow: hidden; /* Prevent overflow */
+    /* overflow: hidden; Prevent overflow */
+    height: 214px;
+    padding: 30px;
 }
 
 form {
@@ -62,8 +63,7 @@ form {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 10px;
-    background-color: lightblue; /* Add some padding for spacing */
+    /* background-color: lightblue; */
 }
 
 .price_nd_quantity {
@@ -73,12 +73,12 @@ form {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 10px;
-    background-color: lightpink;
+    /* background-color: lightpink; */
 }
 
 .destination {
     background-color: lightblue;
+    margin: 10px;
 
 }
 

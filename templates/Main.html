@@ -148,18 +148,6 @@
 
     <!-- User Save -->
     <script>
-        document.getElementById("captureBtn").addEventListener("click", function () {
-            html2canvas(document.getElementById("capture")).then(canvas => {
-                let img = canvas.toDataURL("image/png"); // Convert to image
-                let link = document.createElement("a");
-                link.href = img;
-                link.download = "screenshot.png"; 
-                link.click(); // Trigger download
-            });
-        });
-    </script>
-    <!-- Globe -->
-    <script>
         document.addEventListener("DOMContentLoaded", function () {
             // Get the map div
             const mapDiv = document.querySelector('.map');
@@ -172,28 +160,44 @@
     
             // Set up the Three.js scene
             const scene = new THREE.Scene();
-            const camera = new THREE.PerspectiveCamera(75, mapDiv.clientWidth / mapDiv.clientHeight, 0.1, 1000);
+            const camera = new THREE.PerspectiveCamera(45, mapDiv.clientWidth / mapDiv.clientHeight, 0.1, 1000);
             const renderer = new THREE.WebGLRenderer();
             renderer.setSize(mapDiv.clientWidth, mapDiv.clientHeight);
             mapDiv.appendChild(renderer.domElement);
     
             // Create a sphere (globe)
             const geometry = new THREE.SphereGeometry(2, 32, 32);
+            const textureLoader = new THREE.TextureLoader();
+    
+            // Load the texture
+            const earthTexture = textureLoader.load('static/earthmap.png'); // Adjust the path as needed
+    
+            // Create material with the texture
             const material = new THREE.MeshBasicMaterial({
-                color: 0x0000ff,
-                wireframe: true // Use wireframe for a simple look
+                map: earthTexture,
+                side: THREE.DoubleSide
             });
+    
             const globe = new THREE.Mesh(geometry, material);
             scene.add(globe);
     
             // Position the camera
-            camera.position.z = 5;
+            const cameraPosition = new THREE.Vector3();
+            const usaLAT = 37.0902
+            const usaLONG = -95.7129
+            let theta = (usaLONG + 180) * (Math.PI / 180);
+            let phi = (90 - usaLAT) * (Math.PI / 180);
+            const cameraDistance = 8;
     
             // Animation loop
             function animate() {
                 requestAnimationFrame(animate);
-                globe.rotation.x += 0.01;
-                globe.rotation.y += 0.01;
+                theta += 0.001;
+                cameraPosition.setFromSphericalCoords(cameraDistance, phi, theta);
+                camera.position.copy(cameraPosition);
+                camera.lookAt(scene.position);
+                // globe.rotation.x += 0.005;
+                // globe.rotation.y += 0.005;
                 renderer.render(scene, camera);
             }
     

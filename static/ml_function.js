@@ -45,7 +45,7 @@ $(document).ready(function() {
                             $("#taxResult").html("Tax Rate: " + response.tax_rate + "%" +
                                 "<br>Total Tax: " + response.total_tax +
                                 "<br>Total Price: " + response.total_price +
-                                "<br>Note: Tax rates for " + state + " may have tax exemptions or reduced-rate for this product type");
+                                "<br>Note: Tax rates for " + state + " may have tax exemptions or reduced-rate for " + basicRates[state]);
                         } else if (tax_rate - std_rate > thold) {
                             $("#taxResult").html("Tax Rate: " + response.tax_rate + "%" +
                                 "<br>Total Tax: " + response.total_tax +
@@ -81,7 +81,7 @@ $(document).ready(function() {
             "quantity": $("#quantity").val(),
             "state": $("#state").val(),
             "product_type": product_type,
-            "tax_paid": String(calculationData.total_tax)
+            "tax_paid": calculationData.total_tax
         }
         $.ajax({
             url: "/save_calculation",

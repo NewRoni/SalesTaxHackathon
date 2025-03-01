@@ -3,6 +3,7 @@ $(document).ready(function() {
         e.preventDefault();
 
         var productName = $("#itemName").val();
+        console.log(productName)
         $.ajax({
             url: "/text_inference",
             type: "POST",

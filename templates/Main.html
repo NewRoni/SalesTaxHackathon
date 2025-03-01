@@ -4,9 +4,207 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sales Tax</title>
- 
+    <link rel="stylesheet" href="static/Main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
+
 <body>
-    <p>  hai world</p>
+    <div class = 'page'> 
+        <div class = "content"> 
+            <div class = 'web_intro'> 
+                <h1> US Sales Tax Calculator </h1>
+                <p> We leverage AI to
+                    automatically categorise your product and determine the correct sales 
+                    tax rate based on the product type and the state of purchase</p>
+            </div>
+            <div class = 'entry'> 
+                <form action = '/' method = 'POST'>
+                <div class = 'product_nd_type'> 
+                    <label for="Name">Enter Name of Item</label>
+                    <input type="text" id="Name" name="Name" required> 
+                </div>
+                <div class = 'price_nd_quantity'> 
+                    <label for="Price">Enter Price</label>
+                    <input type="number" id="Price" name="Price" step="0.01" min = '0' required>
+
+                    <label for="Quantity">Enter Quantity of Item</label>
+                    <input type="number" id="quantity" name="Quantity" min = '0'>
+                </div>
+
+            </div>
+            <div class = 'destination'> <label for="State">Enter State</label>
+                <select name="state" id="state">
+                    <option value="null">------------------</option>
+                    <option value="alabama">Alabama</option>
+                    <option value="alaska">Alaska</option>
+                    <option value="arizona">Arizona</option>
+                    <option value="arkansas">Arkansas</option>
+                    <option value="california">California</option>
+                    <option value="colorado">Colorado</option>
+                    <option value="connecticut">Conneticut</option>
+                    <option value="delaware">Delaware</option>
+                    <option value="florida">Florida</option>
+                    <option value="georgia">Georgia</option>
+                    <option value="hawaii">Hawaii</option>
+                    <option value="idaho">Idaho</option>
+                    <option value="illinois">Illinois</option>
+                    <option value="indiana">Indiana</option>
+                    <option value="iowa">Iowa</option>
+                    <option value="kansas">Kansas</option>
+                    <option value="kentucky">Kentucky</option>
+                    <option value="louisiana">Louisiana</option>
+                    <option value="maine">Maine</option>
+                    <option value="maryland">Maryland</option>
+                    <option value="massachusetts">Massachusetts</option>
+                    <option value="michigan">Michigan</option>
+                    <option value="minnesota">Minnesota</option>
+                    <option value="mississipi">Mississipi</option>
+                    <option value="missouri">Missouri</option>
+                    <option value="montana">Montana</option>
+                    <option value="nebraska">Nebraska</option>
+                    <option value="nevada">Nevada</option>
+                    <option value="new hampshire">New Hampshire</option>
+                    <option value="new jersey">New Jersey</option>
+                    <option value="new mexico">New Mexico</option>
+                    <option value="new york">New York</option>
+                    <option value="north carolina">North Carolina</option>
+                    <option value="north dakota">North Dakota</option>
+                    <option value="ohio">Ohio</option>
+                    <option value="oklahoma">Oklahoma</option>
+                    <option value="oregon">Oregon</option>
+                    <option value="pennsylvania">Pennsylvania</option>
+                    <option value="rhode island">Rhode Island</option>
+                    <option value="south carolina">South Carolina</option>
+                    <option value="south dakota">South Dakota</option>
+                    <option value="tennessee">Tennessee</option>
+                    <option value="texas">Texas</option>
+                    <option value="utah">Utah</option>
+                    <option value="vermont">Vermont</option>
+                    <option value="virginia">Virginia</option>
+                    <option value="washington">Washington</option>
+                    <option value="west virginia">West Virginia</option>
+                    <option value="wisconsin">Wisconsin</option>
+                    <option value="wyoming">Wyoming</option>
+                </select>
+            
+                <input type="submit" value="Submit">
+                </form>
+            </div>
+            <div class = 'tax_paid'> </div>
+        </div>
+        <div class = "map">
+            <script src="static/globe.js"></script>
+        </div>
+    </div>
+    <div class = 'page2' id="capture" > 
+        <div class = 'history'> 
+            <div class = 'title'>  <h1> History </h1> </div>
+            <div class = 'records'> </div>
+            <div class = 'save'> <button id="captureBtn">Capture Screenshot</button> </div>
+        </div>
+        <div class = 'data_visualisation'> 
+            <div class = 'filter'> </div>
+            <div class = 'pie_chart'> 
+                <canvas id="myChart"> </canvas>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pie Chart -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script> 
+        const data = {
+            labels: [
+                'Red',
+                'Blue',
+                'Yellow'
+            ],
+            datasets: [{
+                label: 'My First Dataset',
+                data: [300, 50, 100],
+                backgroundColor: [
+                    'rgb(255, 99, 132)',
+                    'rgb(54, 162, 235)',
+                    'rgb(255, 205, 86)'
+                ],
+                hoverOffset: 4
+            }]
+        };
+    
+        const config = {
+            type: 'pie',
+            data: data,
+        };
+
+        var myChart = new Chart(
+            document.getElementById('myChart'),
+            config
+        );
+    </script>
+
+    <!-- User Save -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Get the map div
+            const mapDiv = document.querySelector('.map');
+    
+            // Check if the map div exists
+            if (!mapDiv) {
+                console.error("Map div not found!");
+                return;
+            }
+    
+            // Set up the Three.js scene
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(45, mapDiv.clientWidth / mapDiv.clientHeight, 0.1, 1000);
+            const renderer = new THREE.WebGLRenderer();
+            renderer.setSize(mapDiv.clientWidth, mapDiv.clientHeight);
+            mapDiv.appendChild(renderer.domElement);
+
+            renderer.setClearColor(0xffffff);
+    
+            // Create a sphere (globe)
+            const geometry = new THREE.SphereGeometry(2, 32, 32);
+            const textureLoader = new THREE.TextureLoader();
+    
+            // Load the texture
+            const earthTexture = textureLoader.load('static/earthmap.png'); // Adjust the path as needed
+    
+            // Create material with the texture
+            const material = new THREE.MeshBasicMaterial({
+                map: earthTexture,
+                side: THREE.DoubleSide
+            });
+    
+            const globe = new THREE.Mesh(geometry, material);
+            scene.add(globe);
+    
+            // Position the camera
+            const cameraPosition = new THREE.Vector3();
+            const usaLAT = 37.0902
+            const usaLONG = -95.7129
+            let theta = (usaLONG + 180) * (Math.PI / 180);
+            let phi = (90 - usaLAT) * (Math.PI / 180);
+            const cameraDistance = 8;
+    
+            // Animation loop
+            function animate() {
+                requestAnimationFrame(animate);
+                theta += 0.001;
+                cameraPosition.setFromSphericalCoords(cameraDistance, phi, theta);
+                camera.position.copy(cameraPosition);
+                camera.lookAt(scene.position);
+                // globe.rotation.x += 0.005;
+                // globe.rotation.y += 0.005;
+                renderer.render(scene, camera);
+            }
+    
+            animate();
+        });
+    </script>
 </body>
 </html>

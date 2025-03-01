@@ -172,3 +172,23 @@ input[type="number"] {
     justify-content: center;
     align-items: center;
 }  
+
+.map svg {
+    width: 100%;
+    height: auto;
+}
+
+.map path {
+    fill: #ccc; /* Default state color */
+    stroke: #fff; /* State borders */
+    stroke-width: 1;
+    transition: fill 0.3s ease;
+}
+
+.map path:hover {
+    fill: #ffcc00; /* Hover state color */
+}
+
+.map path.highlight {
+    fill: #ff0000; /* Highlighted state color */
+}

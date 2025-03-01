@@ -3,11 +3,25 @@
     "tax_model_dir": "tax_models",
     "text_results_dir": "product_clf/text_results",
     "hp_tuning_dict": {
-        "learning_rate": [0.01, 0.1, 0.2],  
-        "max_depth": [3, 5, 7],  
-        "subsample": [0.6, 0.8, 1.0],        
-        "colsample_bytree": [0.6, 0.8, 1.0],      
+        "learning_rate": [0.01, 0.1, 0.2],
+        "max_depth": [3, 5, 7],
+        "subsample": [0.6, 0.8, 1.0],
+        "colsample_bytree": [0.6, 0.8, 1.0],
         "n_estimators": [100, 200, 300]
+    },
+    "hp_tuning_dict2": {
+        "learning_rate": [0.15, 0.2, 0.3],
+        "max_depth": [7, 9, 11],
+        "subsample": [0.7, 0.8, 0.9],
+        "colsample_bytree": [0.7, 0.8, 0.9],
+        "n_estimators": [325, 350, 375]
+    },
+    "tax_reg_params": {
+        "learning_rate": 0.3,
+        "max_depth": 11,
+        "subsample": 0.9,
+        "colsample_bytree": 0.8,
+        "n_estimators": 350
     },
     "product_clf_params": {
         "learning_rate": 0.1,

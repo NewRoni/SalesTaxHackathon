@@ -20,6 +20,7 @@ $(document).ready(function() {
 
     function calculateTax(productType) {
         var formData = $("#taxForm").serialize();
+        formData += "&product_type=" + encodeURIComponent(productType);
         const formParams = new URLSearchParams(formData);
         console.log(formData)
         $.ajax({

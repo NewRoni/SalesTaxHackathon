@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales Tax</title>
+    <link rel="stylesheet" href="static/Main.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+
+<body>
+    <div class = 'page'> 
+        <div class = "content"> 
+            <div class = 'web_intro'> 
+                <h1> US Sales Tax Calculator </h1>
+                <p> lorem ipsum ai ai ipsum ai predicative</p>
+            </div>
+            <div class = 'entry'> 
+                <form id='taxForm'>
+                    <label for="itemName">Enter Name of Item</label>
+                    <input type="text" id="itemName" name="itemName">
+                    <br><br>
+
+                    <label for="price">Enter Price</label>
+                    <input type="number" id="price" name="price" step="0.01" min="0">
+                    <br><br>
+
+                    <label for="quantity">Enter Quantity of Item</label>
+                    <input type="number" id="quantity" name="quantity" min="0">
+                    <br><br>
+
+                    <label for="state">Enter State</label>
+                    <select name="state" id="state">
+                        <option value="null">------------------</option>
+                        <option value="alabama">Alabama</option>
+                        <option value="alaska">Alaska</option>
+                        <option value="arizona">Arizona</option>
+                        <option value="arkansas">Arkansas</option>
+                        <option value="california">California</option>
+                        <option value="colorado">Colorado</option>
+                        <option value="connecticut">Conneticut</option>
+                        <option value="delawre">Delaware</option>
+                        <option value="florida">Florida</option>
+                        <option value="georgia">Georgia</option>
+                        <option value="hawaii">Hawaii</option>
+                        <option value="idaho">Idaho</option>
+                        <option value="illinois">Illinois</option>
+                        <option value="indiana">Indiana</option>
+                        <option value="iowa">Iowa</option>
+                        <option value="kansas">Kansas</option>
+                        <option value="kentucky">Kentucky</option>
+                        <option value="louisiana">Louisiana</option>
+                        <option value="maine">Maine</option>
+                        <option value="maryland">Maryland</option>
+                        <option value="massachusetts">Massachusetts</option>
+                        <option value="michigan">Michigan</option>
+                        <option value="minnesota">Minnesota</option>
+                        <option value="mississipi">Mississipi</option>
+                        <option value="missouri">Missouri</option>
+                        <option value="montana">Montana</option>
+                        <option value="nebraska">Nebraska</option>
+                        <option value="nevada">Nevada</option>
+                        <option value="new hampshire">New Hampshire</option>
+                        <option value="new jersey">New Jersey</option>
+                        <option value="new mexico">New Mexico</option>
+                        <option value="new york">New York</option>
+                        <option value="north carolina">North Carolina</option>
+                        <option value="north dakota">North Dakota</option>
+                        <option value="ohio">Ohio</option>
+                        <option value="oklahoma">Oklahoma</option>
+                        <option value="oregon">Oregon</option>
+                        <option value="pennsylvania">Pennsylvania</option>
+                        <option value="rhode island">Rhode Island</option>
+                        <option value="south carolina">South Carolina</option>
+                        <option value="south dakota">South Dakota</option>
+                        <option value="tennessee">Tennessee</option>
+                        <option value="texas">Texas</option>
+                        <option value="utah">Utah</option>
+                        <option value="vermont">Vermont</option>
+                        <option value="virginia">Virginia</option>
+                        <option value="washington">Washington</option>
+                        <option value="west virginia">West Virginia</option>
+                        <option value="wisconsin">Wisconsin</option>
+                        <option value="wyoming">Wyoming</option>
+                    </select>
+                    <label for="product_type">Product Type:</label>
+                    <input type="text" id="product_type" name="product_type">
+                    <button type="button" id="generateProductType">Generate</button>
+                    <br><br>
+
+                    <input type="submit" value="Submit", id="submitButton">
+                </form>
+            </div>
+            <div id="taxResult"></div> </div>
+        </div>
+        <div class = "map"></div>
+    </div>
+    <div class = 'page2' id="capture" >
+        <div class = 'history'>
+            <div class = 'title'>  <h1> History </h1> </div>
+            <div class = 'records'> </div>
+            <div class = 'save'> <button id="captureBtn">Capture Screenshot</button> </div>
+        </div>
+        <div class = 'data_visualisation'> 
+            <div class = 'filter'> </div>
+            <div class = 'pie_chart'> 
+                <canvas id="myChart"> </canvas>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            $("#generateProductType").click(function() {
+                var productName = $("#itemName").val();
+                $.ajax({
+                    url: "/text_inference",
+                    type: "POST",
+                    data: { product_name: productName },
+                    success: function(response) {
+                        console.log(response)
+                        $("#product_type").val(response);
+                    },
+                    error: function(xhr, status, error) {
+                        console.error("Error generating product type:", error);
+                        alert('Error generating product type.');
+                    }
+                });
+            });
+
+            $("#submitButton").click(function(e) {
+                e.preventDefault();
+                var formData = $("#taxForm").serialize();
+                console.log(formData)
+                $.ajax({
+                    url: "/tax_inference",
+                    type: "POST",
+                    data: formData,
+                    success: function(response) {
+                        if (response.error) {
+                            $("#taxResult").html("Error: " + response.error);
+                        } else {
+                            $("#taxResult").html("Tax Rate: " + response.tax_rate +
+                                                "<br>Total Tax: " + response.total_tax +
+                                                "<br>Total Price: " + response.total_price);
+                        }
+                        success = saveCalculation(response)
+                        $("#taxForm")[0].reset(); // Clear the form
+                    },
+                    error: function(xhr, status, error) {
+                        console.error("Error calculating tax:", error);
+                        console.error("status:", status);
+                        console.error("responseText:", xhr.responseText);
+                        alert('Error calculating tax: ' + xhr.responseText);
+                    }
+                });
+            });
+            function saveCalculation(calculationData) {
+                const data = {
+                    "itemName": $("#itemName").val(),
+                    "price": $("#price").val(),
+                    "quantity": $("#quantity").val(),
+                    "state": $("#state").val(),
+                    "product_type": $("#product_type").val(),
+                    "tax_paid": String(calculationData.total_tax)
+                }
+                $.ajax({
+                    url: "/save_calculation",
+                    type: "POST",
+                    data: JSON.stringify(data),
+                    contentType: "application/json",
+                    success: function(response) {
+                        console.log("Calculation saved to database:", response);
+                    },
+                    error: function(xhr, status, error) {
+                        console.error("Error saving calculation:", xhr, status, error);
+                        alert('Error saving calculation: ' + xhr.responseText);
+                    }
+                });
+            }
+        });
+
+        
+    </script>
+
+    <!-- Pie Chart -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script> 
+        const data = {
+            labels: [
+                'Red',
+                'Blue',
+                'Yellow'
+            ],
+            datasets: [{
+                label: 'My First Dataset',
+                data: [300, 50, 100],
+                backgroundColor: [
+                    'rgb(255, 99, 132)',
+                    'rgb(54, 162, 235)',
+                    'rgb(255, 205, 86)'
+                ],
+                hoverOffset: 4
+            }]
+        };
+    
+        const config = {
+            type: 'pie',
+            data: data,
+        };
+
+        var myChart = new Chart(
+            document.getElementById('myChart'),
+            config
+        );
+    </script>
+
+    <!-- User Save -->
+    <script>
+        document.getElementById("captureBtn").addEventListener("click", function () {
+            html2canvas(document.getElementById("capture")).then(canvas => {
+                let img = canvas.toDataURL("image/png"); // Convert to image
+                let link = document.createElement("a");
+                link.href = img;
+                link.download = "screenshot.png"; 
+                link.click(); // Trigger download
+            });
+        });
+    </script>
+</body>
+</html>

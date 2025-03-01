@@ -126,7 +126,7 @@ input[type="number"] {
     width: 100%;
     padding: 10px;
     margin: 8px 0;
-    border: 1px solid #ccc;
+    border: 1px solid #FAFAFF;
     border-radius: 4px;
     box-sizing: border-box;
     font-size: 16px;
@@ -134,12 +134,14 @@ input[type="number"] {
 }
 
 input[list="stateList"] {
-    width: 200px;
-    padding: 5px;
-    border: 1px solid #ccc;
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid #FAFAFF;
     border-radius: 4px;
-    font-size: 16px;
     box-sizing: border-box;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
 }
 
 .title {
@@ -207,3 +209,11 @@ input[list="stateList"] {
     stroke: #000; /* Optional: Change the stroke color */
     stroke-width: 2; /* Optional: Change the stroke width */
 }
+
+svg {
+    pointer-events: all; /* Ensure SVG is interactive */
+  }
+
+path {
+    pointer-events: all; /* Ensure paths are interactive */
+  }

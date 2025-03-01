@@ -1,50 +1,111 @@
-from flask import Flask, render_template, request, session
+from flask import Flask, render_template, request, session, jsonify
 import flask_session
+from training import load_model
+from product_clf.preprocess import preprocess
 import sqlite3
+import uuid
 import logging
+import ml_utilities as ml
+import pandas as pd
+import json
 
+config = json.load(open('config.json', 'r'))
+tax_model = load_model(f"{config['tax_model_dir']}/model.pkl")
+encoder = load_model(f"{config['tax_model_dir']}/encoder.pkl")
+
+text_model = load_model(f"{config['text_model_dir']}/product_clf.pkl")
+lb_encoder = load_model(f"{config['text_model_dir']}/label_encoder.pkl")
 
 app = Flask(__name__)
 
 app.secret_key = "usercrypt"
-logging.basicConfig(level=logging.DEBUG)
+session_id = ''
+
+def check_session(f):
+    def decorated_function(*args, **kwargs):
+        if 'session_id' not in session:
+            session['session_id'] = str(uuid.uuid4()) # generate session id
+            session.permanent = True
+        return f(*args, **kwargs)
+    return decorated_function
+
+
 # Starts a user session and greets the user with an input box
 @app.route('/', methods=['POST', 'GET'])
+@check_session
 def Main():
-    result = None
-    if request.method == 'POST':
-        logging.debug("Entered Main")
-        session.permanent = True
-      
+    global session_id
+    session_id = session['session_id']
+    return render_template('Main.html')
 
-        state = request.form.get('state')
-        price = request.form.get('Price')
-        quantity = request.form.get('Quantity')
-        name = request.form.get('Name')
-
-        if not state or not price or not quantity or not name:
-            result = "Please fill blank fields"
-        else:
-            try:
-
-                price = float(price)
-                quantity = int(quantity)
-
-                session['state'] = state
-                session['price'] = price
-                session['quantity'] = quantity
-                session['name'] = name
-    
-            except ValueError:
-                result = "Ensure Price and quantity are both numbers"
-        logging.debug("Submitted Form")
-        print(session)
-        sessionid = request.cookies.get('session')
-        print(sessionid)
-        print(session)
+@app.route('/save_calculation', methods=['POST'])
+def save_calculation():
+    if request.method == "POST":
+        data = request.get_json()
+        calculation_id = str(uuid.uuid4())
+        global session_id
         
-    return render_template('Main.html', result=result)
+        itemName = data.get('itemName')
+        price = data.get('price')
+        quantity = data.get('quantity')
+        product_type = data.get('product_type')
+        state = data.get('state')
+        tax_paid = data.get('tax_paid')
+        
+        if not all([itemName, price, quantity, state, product_type, tax_paid]):
+            return jsonify({'error': 'Missing data in request'}), 400
 
+        try:
+            TaxHistory(calculation_id, session_id, state, itemName, product_type, float(price), int(quantity), float(tax_paid))
+            return jsonify({'message': 'Calculation saved successfully!'})
+        except Exception as e:
+            return jsonify({'error': f'Database error: {e}'}), 500
+
+@app.route('/text_inference', methods=['POST'])
+def text_inference():
+    product_name = request.form['product_name']
+    class_names = lb_encoder.classes_
+    
+    input_df = pd.DataFrame({
+        "product_name": [product_name]
+    })
+    X = preprocess(input_df, mode="inference")
+    y_pred = ml.predict(text_model, X)[0]
+    print(y_pred)
+    return class_names[y_pred]
+    
+
+@app.route('/tax_inference', methods=['POST'])
+def inference():
+    try:
+        state = str(request.form['state']).title()
+        price = float(request.form['price'])
+        quantity = int(request.form['quantity'])
+        product_type = request.form.get('product_type')
+        product_type = 'General' if not product_type else str(product_type).title()
+        
+        input_df = pd.DataFrame({
+            "state": [state],
+            "product_type": [product_type]
+        })
+        X = encoder.transform(input_df)
+        tax_rate = ml.predict(tax_model, X)[0]
+        tax_rate = abs(round(tax_rate, 4))
+
+        pretax_cost = price * quantity
+        total_tax = pretax_cost * tax_rate
+        total_price = pretax_cost + total_tax
+        print(f"<<Total: {total_price}>>")
+        
+        return jsonify({
+                'tax_rate': f"{tax_rate * 100:.2f}%",
+                'total_tax': f"{total_tax:.2f}",
+                'total_price': f"{total_price:.2f}"
+            })
+    except (KeyError, ValueError, TypeError) as e:
+        return jsonify({'error': f"Invalid input: {e}"}), 400
+    except Exception as e:
+        return jsonify({'error': f"An unexpected error occurred: {e}"}), 500
 
 
 DB_NAME = 'SalesTax.db'
@@ -52,7 +113,6 @@ DB_NAME = 'SalesTax.db'
 with sqlite3.connect(DB_NAME) as db:
   pass
 
-# calculation_id = str(uuid.uuid4())
 
 def CreateHistoryTable():
   conn = sqlite3.connect(DB_NAME)
@@ -92,7 +152,6 @@ def DeleteHistoryTable():
 
 #DeleteHistoryTable()
 #CreateHistoryTable()
-#TaxHistory(calculation_id,'eyJfcGVybWFuZW50Ijp0cnVlLCJwcmljZSI6MTksInN0YXRlIjoiT2hpbyJ9.Z8B7Zw.S_EX5r9nTm3xvBKkUqQsswKE0Wk', 'Ohio', 'gift card', 'inheritance', 19, 2, 1.99)
 #CallHistory()
 
 

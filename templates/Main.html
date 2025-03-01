@@ -10,6 +10,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://threejs.org/examples/js/controls/OrbitControls.js"></script>
+
 </head>
 
 <body>
@@ -161,15 +163,15 @@
             // Set up the Three.js scene
             const scene = new THREE.Scene();
             const camera = new THREE.PerspectiveCamera(45, mapDiv.clientWidth / mapDiv.clientHeight, 0.1, 1000);
-            const renderer = new THREE.WebGLRenderer();
+            const renderer = new THREE.WebGLRenderer({alpha : true});
             renderer.setSize(mapDiv.clientWidth, mapDiv.clientHeight);
             mapDiv.appendChild(renderer.domElement);
-
-            renderer.setClearColor(0xffffff);
+            renderer.setClearColor(0x000000, 0);
     
             // Create a sphere (globe)
             const geometry = new THREE.SphereGeometry(2, 32, 32);
             const textureLoader = new THREE.TextureLoader();
+            
     
             // Load the texture
             const earthTexture = textureLoader.load('static/earthmap.png'); // Adjust the path as needed
@@ -190,10 +192,12 @@
             let theta = (usaLONG + 180) * (Math.PI / 180);
             let phi = (90 - usaLAT) * (Math.PI / 180);
             const cameraDistance = 8;
+            
     
             // Animation loop
             function animate() {
                 requestAnimationFrame(animate);
+                
                 theta += 0.001;
                 cameraPosition.setFromSphericalCoords(cameraDistance, phi, theta);
                 camera.position.copy(cameraPosition);

@@ -4,6 +4,7 @@ $(document).ready(function() {
 
         var productName = $("#itemName").val();
         console.log(productName)
+        console.log(productName)
         $.ajax({
             url: "/text_inference",
             type: "POST",
@@ -32,35 +33,34 @@ $(document).ready(function() {
                 if (response.error) {
                     $("#taxResult").html("Error: " + response.error);
                 } else {
-                    $.getJSON("/static/basic_rates.json", function(basicRates) {
-                        // Correct selector for the select element
-                        var state = formParams.get("state");
-                        state = state.charAt(0).toUpperCase() + state.substring(1).toLowerCase()
-                        const std_rate = parseFloat(basicRates[state]) * 100.0;
-                        const tax_rate = parseFloat(response.tax_rate);
-                        const thold = 0.9;
-                        console.log("STD RATE: " + std_rate + ", TAX RATE: " + tax_rate);
-
-                        if (std_rate - tax_rate > thold) {
-                            $("#taxResult").html("Tax Rate: " + response.tax_rate + "%" +
-                                "<br>Total Tax: " + response.total_tax +
-                                "<br>Total Price: " + response.total_price +
-                                "<br>Note: Tax rates for " + state + " may have tax exemptions or reduced-rate for this product type");
-                        } else if (tax_rate - std_rate > thold) {
-                            $("#taxResult").html("Tax Rate: " + response.tax_rate + "%" +
-                                "<br>Total Tax: " + response.total_tax +
-                                "<br>Total Price: " + response.total_price +
-                                "<br>Note: Tax rates for " + state + " may have tax-liabilities for this product type");
-                        } else {
-                            $("#taxResult").html("Tax Rate: " + response.tax_rate + "%" +
-                                "<br>Total Tax: " + response.total_tax +
-                                "<br>Total Price: " + response.total_price);
-                        }
-                    })
-                    .fail(function(jqxhr, textStatus, error) {
-                        console.error("Error fetching basic_rates.json:", textStatus, error);
-                        $("#taxResult").html("Error: Could not fetch tax rates.");
-                    });
+                    fetch('data/basic_rates.json')
+                        .then(response => response.json())
+                        .then(json_data => {
+                            const state = $("state").val()
+                            const std_rate = json_data[dynamicKey];
+                            const tax_rate = parseFloat(response.tax_rate)
+                            const thold = 0.9
+                            console.log("TAX RATE " + tax_rate)
+                            console.log("STD RATE " + std_rate)
+                            if (std_rate - tax_rate > thold){
+                                $("#taxResult").html("Tax Rate: " + response.tax_rate +
+                                    "<br>Total Tax: " + response.total_tax +
+                                    "<br>Total Price: " + response.total_price + 
+                                "<br>Note: Tax rates for " + state + " may have tax exemptions or reduced-rate for this product type")
+                            }
+                            else if (tax_rate - std_rate > thold){
+                                $("#taxResult").html("Tax Rate: " + response.tax_rate + "%" + 
+                                    "<br>Total Tax: " + response.total_tax +
+                                    "<br>Total Price: " + response.total_price + 
+                                "<br>Note: Tax rates for " + state + " may have tax-liabilities for this product type")
+                            }
+                            else{
+                                $("#taxResult").html("Tax Rate: " + response.tax_rate +
+                                    "<br>Total Tax: " + response.total_tax +
+                                    "<br>Total Price: " + response.total_price);
+                            }
+                        })
+                        .catch(error => console.error('Error:', error));
                 }
                 success = saveCalculation(response, productType)
                 $("#taxForm")[0].reset(); // Clear the form
@@ -81,7 +81,7 @@ $(document).ready(function() {
             "quantity": $("#quantity").val(),
             "state": $("#state").val(),
             "product_type": product_type,
-            "tax_paid": String(calculationData.total_tax)
+            "tax_paid": calculationData.total_tax
         }
         $.ajax({
             url: "/save_calculation",

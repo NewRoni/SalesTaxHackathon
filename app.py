@@ -11,7 +11,7 @@ import json
 import pickle
 
 config = json.load(open('config.json', 'r'))
-tax_model = load_model(f"{config['tax_model_dir']}/model.pkl")
+tax_model = load_model(f"{config['tax_model_dir']}/model3.pkl")
 encoder = load_model(f"{config['tax_model_dir']}/encoder.pkl")
 
 text_model = load_model(f"{config['text_model_dir']}/product_clf.pkl")
@@ -29,19 +29,21 @@ def check_session(f):
             session.permanent = True
         else:
             history = CallHistory()
-            user_logs = [log[2:] for log in history if log[1] == session['session_id']]
+            user_logs = [[log[2].title()] + list(log[3:]) for log in history if log[1] == session['session_id']]
+            kwargs['user_logs'] = user_logs
             print(user_logs)
         return f(*args, **kwargs)
     return decorated_function
 
 # Starts a user session and greets the user with an input box
-@app.route('/', methods=['POST', 'GET'])
+@app.route('/')
 @check_session
-def Main():
+def Main(user_logs):
     global session_id
     session_id = session['session_id']
     print(f"Session id: {session_id}")
-    return render_template('Main.html')
+    
+    return render_template('update_main.html', logs=user_logs)
 
 @app.route('/save_calculation', methods=['POST'])
 def save_calculation():

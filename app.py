@@ -26,9 +26,12 @@ def check_session(f):
         if 'session_id' not in session:
             session['session_id'] = str(uuid.uuid4()) # generate session id
             session.permanent = True
+        else:
+            history = CallHistory()
+            user_logs = [log[2:] for log in history if log[1] == session['session_id']]
+            print(user_logs)
         return f(*args, **kwargs)
     return decorated_function
-
 
 # Starts a user session and greets the user with an input box
 @app.route('/', methods=['POST', 'GET'])
@@ -36,6 +39,7 @@ def check_session(f):
 def Main():
     global session_id
     session_id = session['session_id']
+    print(f"Session id: {session_id}")
     return render_template('Main.html')
 
 @app.route('/save_calculation', methods=['POST'])
@@ -136,9 +140,8 @@ def CallHistory():
   curs = conn.cursor()
   curs.execute('SELECT * FROM History')
   rows = curs.fetchall()
-  for i in rows:
-    print(i)
   conn.close()
+  return rows
 
 def DeleteHistoryTable():
   conn = sqlite3.connect(DB_NAME)

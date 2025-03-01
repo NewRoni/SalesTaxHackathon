@@ -8,6 +8,7 @@ import logging
 import ml_utilities as ml
 import pandas as pd
 import json
+import pickle
 
 config = json.load(open('config.json', 'r'))
 tax_model = load_model(f"{config['tax_model_dir']}/model.pkl")

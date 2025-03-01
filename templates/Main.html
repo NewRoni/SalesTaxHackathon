@@ -93,8 +93,8 @@
                     <option value="wyoming">Wyoming</option>
                 </select>
                 <div class="final_submit">
-                    <img src="/static/calc.png"/>
-                    <input class="final_submit_btn" type="submit" id="submitButton" />
+                    <img src="/static/calc.png" alt="Submit" id="submitImage" />
+                    <input class="final_submit_btn" type="submit" id="submitButton" style="display: none;" />
                   </div>
             </div>
             <div class = 'seperating_line'> </div>
@@ -118,6 +118,12 @@
             </div>
         </div>
     </div>
+
+    <script> 
+        document.getElementById('submitImage').addEventListener('click', function() {
+        document.getElementById('submitButton').click();
+      });
+    </script>
 
 
     <!-- Pie Chart -->

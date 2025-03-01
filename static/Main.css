@@ -146,7 +146,7 @@ p {
 
 #state {
     width: 444px;
-    height: 84px;
+    height: 42px;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     padding: 20px;
     border: 2px solid rgba(231, 231, 231, .8);
@@ -157,9 +157,11 @@ p {
     text-shadow: 0px 1px 7px rgba(0, 0, 0, .08);
     font-size: 22px;
     color: #888888;
-    appearance: none; 
+    appearance: none;
+    -webkit-appearance: none;
     cursor: text;
 }
+
 
 
 .final_submit{
@@ -200,8 +202,13 @@ p {
     padding: 10px;
 }
 
-.map{
-    background-color: lightpink;
+.map {
+
+}
+
+.map svg {
+    width: 100%;  /* Make SVG scale within the container */
+    height: 100%;
 }
 
 .page2 {

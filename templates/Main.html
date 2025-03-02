@@ -669,13 +669,19 @@
 
         </div>
         <div class = 'history'> 
-            <div class = 'title'>  <h1 style="margin-top: 0px;"> History </h1> </div>
+            <div class = 'title'>  <h1 style="margin-top: 5px;"> History </h1> </div>
             <div class = 'records'>
                 {% if logs %}
                 {% for log in logs %}
                     <div class="log-entry">
-                        <h3 class = 'loco'>{{ log[0] }}  </h3> <h3 class = 'price'> {{log[-1]}}</h3>
-                        <p><b class = ''>{{log[2]}} {{log[1]}}</b><p>
+                        <div class = 'top_log'>
+                            <div class = 'loco'>{{ log[0] }}  </div> 
+                            <div class = 'price_history'> ${{log[-1]}}</div>
+                        </div>
+                        <div class = 'bottom_log'>
+                            <div class = 'type_name'> {{log[2]}}, </div>
+                            <div class = 'product_name'> ( {{log[1]}} )</div>
+                        </div>
                     </div>
                 {% endfor %}
             {% else %}

@@ -239,46 +239,77 @@ p {
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     padding: 10px;
     width: 444px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.type_info {
+    display: flex;
+    flex-direction: column;
+    width: 175px;
+    padding-left: 10px;
+    justify-content: flex-start;
 }
 
 .tax_paid {
-    display: inline-block;
-    vertical-align: top;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 20px;
 }
 
 
 .red_nd_perc {
     display: flex;
     align-self: flex-end;
+    transform: translateY(18px);
 }
 
-.type_info {
-    display: inline-block;
-    width: 175px;
-}
 
 .red_tp {
     font-size: 25px;
     color: #A32F2F;
     font-weight: bold;
     align-self: center;
-    margin-right: 20px;
+    margin-right: 5px;
+    margin-bottom: 5px;
 }
+
 
 .percentage {
     font-size: 39px;
     color: #C7C7C7;
     font-weight: bold;
-    margin-right: 30px;
-    align-self: flex-end;
+    margin-left: 15px;
+    transform: translateY(-5px);
 }
 
 .final_price {
     font-size: 65px;
     color: #333333;
     font-weight: bold;
-    align-self: center;
     text-shadow: 0px 1px 7px rgba(0, 0, 0, .08);
+}
+
+.ai_pt {
+    font-size: 18px;
+    font-weight: 500;
+    color: #D3D3D3;
+    padding-left: 10px;
+    justify-content: flex-start;
+}
+
+.type_name {
+    font-size: 18px;
+}
+
+.red_tr {
+    font-size: 18px;
+}
+
+.tax_rate{
+    font-size: 18px;
 }
 
 .map svg {
@@ -289,7 +320,7 @@ p {
 .page2 {
     display: grid;
     grid-template-columns: 2fr 1fr;
-    height: 580px;
+    height: 560px;
     background-color: #f5f5ff;
 }
 
@@ -313,7 +344,7 @@ p {
 
 .pie_chart {
     /* background-color: rgb(79, 128, 208); */
-    margin-top: 45px;
+    margin-top: 40px;
     height: 425px;
 }
 
@@ -431,4 +462,9 @@ p {
 
 .product_name {
     font-size: 17px;
+}
+
+.ai_star img {
+    width: 21px;
+    height: 21px;
 }

@@ -1,17 +1,3 @@
-.tax_result{
-    background-color: white;
-    margin: 10px;
-    margin-left: 0px;
-    margin-top: 25px;
-    border-radius: 20px;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    display: grid;
-    height: 140px;
-    padding: 10px;
-    grid-template-columns: 2fr 3fr;
-    width: 444px;
-}
-
 .type_info{
     display: flex;
     flex-direction: column;
@@ -19,18 +5,16 @@
 }
 
 .tax_paid {
-    /* background-color: lightpink; */
     display: flex;
     flex-direction: column;
-    align-items: flex-start;; /* 1st row for the side-by-side items, 2nd for the final price */
-     /* Ensure everything is centered */
+    align-items: flex-start;
 }
 
 .red_nd_perc {
     display: flex;
-    flex-direction: row; /* Make them side by side */
+    flex-direction: row;
     align-items: flex-end;
-    align-self: end;/* Vertically align the items */
+    align-self: end;
 }
 
 .red_tp {
@@ -39,7 +23,7 @@
     font-weight: bold;
     margin-right: 20px;
     margin-bottom: -30px;
-    align-self: center /* Add space between .red_tp and .percentage */
+    align-self: center;
 }
 
 .percentage {

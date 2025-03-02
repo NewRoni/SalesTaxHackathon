@@ -81,8 +81,22 @@ p {
     border: 1.5px solid #E7E7E7;
     border-radius: 5px;
     box-sizing: border-box;
-    font-size: 16px;
+    font-size: 20px;
     margin-top: 7px;
+    color: #333333;
+}
+
+#itemName:focus + .input_label_name,
+#itemName:not(:placeholder-shown) + .input_label_name {
+    top: -10px; /* Move the label up */
+    left: 10px;
+    font-size: 12px; /* Smaller font when the label floats */
+    color: #555555; /* Change label color */
+}
+
+/* Optional: Adding a transparent placeholder to clear space */
+#itemName::placeholder {
+    color: transparent;
 }
 
 .input_label {
@@ -100,13 +114,31 @@ p {
     width: 168px; /* Adjust the width of the price input */
     height: 43px;
     padding: 10px;
+    padding-left: 23px;
     border: 1.5px solid #E7E7E7;
     border-radius: 5px;
     box-sizing: border-box;
     font-size: 20px;
-    color: #888888;
+    color: #333333;
     text-shadow: 0px 1px 7px rgba(0, 0, 0, .08);
     margin-right: 22px;
+}
+
+#price::placeholder {
+    color: #888888; /* Change the color of the placeholder (dollar sign) */
+}
+
+#price:focus::placeholder {
+    color: transparent; /* Make the placeholder transparent when focused */
+}
+
+.currency-symbol {
+    position: absolute;
+    left: 105px;
+    transform: translateX(-50%);
+    font-size: 20px;
+    color: #888888;
+    pointer-events: none; /* Prevent the symbol from being selected */
 }
 
 #quantity {
@@ -117,7 +149,8 @@ p {
     border-radius: 5px;
     box-sizing: border-box;
     font-size: 16px;
-    margin-right: 5px;
+    margin-right: 8px;
+    color: #333333;
 }
 
 .ximg img {
@@ -142,6 +175,7 @@ p {
     justify-content: center;
     align-items: center;
 }
+
 
 
 #state {
@@ -189,6 +223,7 @@ p {
     width: 97%; /* Makes the line span the full width of its container */
 }
 
+
 #taxResult{
     background-color: white;
     margin: 10px;
@@ -202,16 +237,18 @@ p {
 
 .tax_paid {
     display: inline-block;
-    vertical-align: top;   /* Aligns inline-block elements at the top */
+    vertical-align: top;
+}
+
+
+.red_nd_perc {
+    display: flex;
+    align-self: flex-end;
 }
 
 .type_info {
     display: inline-block;
     width: 175px;
-}
-.red_nd_perc {
-    display: flex;
-    align-self: end;
 }
 
 .red_tp {
@@ -227,7 +264,7 @@ p {
     color: #C7C7C7;
     font-weight: bold;
     margin-right: 30px;
-    align-self: flex-end
+    align-self: flex-end;
 }
 
 .final_price {
@@ -246,7 +283,7 @@ p {
 .page2 {
     display: grid;
     grid-template-columns: 2fr 1fr;
-    height: 550px;
+    height: 580px;
     background-color: #f5f5ff;
 }
 
@@ -270,7 +307,7 @@ p {
 
 .pie_chart {
     /* background-color: rgb(79, 128, 208); */
-    margin-top: 20px;
+    margin-top: 45px;
     height: 425px;
 }
 

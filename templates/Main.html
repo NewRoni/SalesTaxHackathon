@@ -30,7 +30,8 @@
                     <input type="text" id="itemName" name="itemName" required>
                 </div>
                 <div class = 'price_nd_quantity'> 
-                    <input type="text" placeholder = '$' id="price" name="price" step="0.01" min = '0' required>
+                    <span class="currency-symbol">$</span>
+                    <input type="number" id="price" name="price" step="0.01" min = '0' required>
                     <div class = 'ximg'>  <img src="/static/x@3x.png"/> </div>
                     <input type="number" id="quantity" name="quantity" min = '0'>
                     <label for="quantity" class = 'input_label'> quantity </label>
@@ -101,10 +102,10 @@
             </form>
             <div id="taxResult"> 
                 <div class = 'type_info'> 
-                    <div class = 'ai_pt'> Product Type</div>
-                    <div class = 'type_name'> Automotive</div>
-                    <div class = 'red_tr'> Tax Rate</div>
-                    <div class = 'tax_rate'> 70%</div>
+                    <div class = 'ai_pt'> Product Type </div>
+                    <div class = 'type_name'> Automotive </div>
+                    <div class = 'red_tr'> Tax Rate </div>
+                    <div class = 'tax_rate'> 70% </div>
                 </div>
                 <div class = 'tax_paid'> 
                     <div class ='red_nd_perc'> 
@@ -116,7 +117,7 @@
                 <div class = 'extra_note'></div>
             </div>
         </div>
-        <div class = "map">
+        <div class = "map" id = 'capture_map'>
             <svg
                 xmlns:dc="http://purl.org/dc/elements/1.1/"
                 xmlns:cc="http://creativecommons.org/ns#"
@@ -655,9 +656,9 @@
             </svg>
         </div>
     </div>
-    <div class = 'page2' id="capture" > 
+    <div class = 'page2'> 
         <div class = 'data_visualisation'> 
-            <div class = 'pie_chart'> 
+            <div class = 'pie_chart' id="capture_pie_chart"> 
                 <canvas id="myChart"> </canvas>
             </div>
             <div class="save">
@@ -703,6 +704,23 @@
             const stateSelect = document.getElementById('state');
             const statePaths = document.querySelectorAll('.map path'); // Select all state paths
 
+            // For Pie Chart map link & ss
+            const top3States = {{ top_3_states | tojson }};
+            const states = top3States.map(stateTax => stateTax[0]);
+
+            document.getElementById(states[0]).style.fill = 'rgb(117, 117, 159)';
+            document.getElementById(states[0]).style.stroke = 'black';
+            document.getElementById(states[0]).style.strokeWidth = '1';
+
+            document.getElementById(states[1]).style.fill = 'rgb(160, 126, 180)';
+            document.getElementById(states[1]).style.stroke = 'black';
+            document.getElementById(states[1]).style.strokeWidth = '1';
+
+            document.getElementById(states[2]).style.fill = 'rgb(220, 220, 255)';
+            document.getElementById(states[2]).style.stroke = 'black';
+            document.getElementById(states[2]).style.strokeWidth = '1';
+
+
             // Function to reset all states to their default style
             function resetStateStyles() {
                 statePaths.forEach(path => {
@@ -710,6 +728,19 @@
                     path.style.stroke = '#000'; // Default stroke (border) color
                     path.style.strokeWidth = '0.97063118000000004'; // Default stroke width
                 });
+
+
+                document.getElementById(states[0]).style.fill = 'rgb(117, 117, 159)';
+                document.getElementById(states[0]).style.stroke = 'black';
+                document.getElementById(states[0]).style.strokeWidth = '1';
+
+                document.getElementById(states[1]).style.fill = 'rgb(160, 126, 180)';
+                document.getElementById(states[1]).style.stroke = 'black';
+                document.getElementById(states[1]).style.strokeWidth = '1';
+
+                document.getElementById(states[2]).style.fill = 'rgb(220, 220, 255)';
+                document.getElementById(states[2]).style.stroke = 'black';
+                document.getElementById(states[2]).style.strokeWidth = '1';
             }
 
             // Event listener for state selection changes
@@ -729,6 +760,7 @@
                 }
             }
         });
+
     });
     </script>
 
@@ -858,19 +890,56 @@ const config = {
         document.getElementById('myChart'),
         config
     );
+
 </script>
 
     <!-- User Save -->
     <script>
-        document.getElementById("captureBtn").addEventListener("click", function () {
-            html2canvas(document.getElementById("capture")).then(canvas => {
-                let img = canvas.toDataURL("image/png"); // Convert to image
-                let link = document.createElement("a");
-                link.href = img;
-                link.download = "screenshot.png"; 
-                link.click(); // Trigger download
-            });
-        });
+       document.getElementById("captureBtn").addEventListener("click", async function () {
+    const div1 = document.getElementById("capture_pie_chart");
+    const div2 = document.getElementById("capture_map");
+
+    // Capture both divs separately
+    const canvas1 = await html2canvas(div1, {
+        useCORS: true,
+        allowTaint: true
+    });
+
+    const canvas2 = await html2canvas(div2, {
+        useCORS: true,
+        allowTaint: true
+    });
+
+    // Get the dimensions of div1 (which div2 will be scaled to match)
+    const div1Width = canvas1.width;
+    const div1Height = canvas1.height;
+
+    // Get the scaling factor to match div2 to div1's width and height
+    const scale = Math.max(div1Width / canvas2.width, div1Height / canvas2.height);
+
+    // Scale div2 to match div1's size while maintaining aspect ratio
+    const newWidth2 = canvas2.width * scale;
+    const newHeight2 = canvas2.height * scale;
+
+    // Create a final canvas to merge both
+    const finalCanvas = document.createElement("canvas");
+    const ctx = finalCanvas.getContext("2d");
+
+    // Set final canvas width and height to ensure both divs fit side by side
+    finalCanvas.width = div1Width + newWidth2;
+    finalCanvas.height = Math.max(div1Height, newHeight2); // Ensure enough height for both divs
+
+    // Draw both images side by side
+    ctx.drawImage(canvas1, 0, 0, div1Width, div1Height); // First div (div1)
+    ctx.drawImage(canvas2, div1Width, 0, newWidth2, newHeight2); // Scaled second div (div2)
+
+    // Convert to image and download
+    let img = finalCanvas.toDataURL("image/png");
+    let link = document.createElement("a");
+    link.href = img;
+    link.download = "tax_result_screenshot.png";
+    link.click();
+});
     </script>
 
 </body>

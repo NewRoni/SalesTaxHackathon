@@ -42,8 +42,9 @@ def Main(user_logs):
     global session_id
     session_id = session['session_id']
     print(f"Session id: {session_id}")
+    top_3_states = StateTotalTax(user_logs)
     
-    return render_template('update_main.html', logs=user_logs)
+    return render_template('Main.html', logs=user_logs, top_3_states = top_3_states)
 
 @app.route('/save_calculation', methods=['POST'])
 def save_calculation():
@@ -120,6 +121,27 @@ DB_NAME = 'SalesTax.db'
 with sqlite3.connect(DB_NAME) as db:
   pass
 
+def StateTotalTax(user_logs):
+    state_tax_dict = {}
+
+    for log in user_logs:
+        state = log[0]
+        tax = log[-1]
+
+        if state not in state_tax_dict:
+            state_tax_dict[state] = tax
+        else:
+            state_tax_dict[state] += tax 
+
+    sorted_dict = sorted(state_tax_dict.items(), key=lambda t: t[1], reverse=True)
+
+    top_3_state_cost = []
+
+    for state, tax in sorted_dict[:3]:  # Get only the top 3
+        top_3_state_cost.append((state, tax))  # Append as tuple
+
+    return top_3_state_cost
+
 
 def CreateHistoryTable():
   conn = sqlite3.connect(DB_NAME)
@@ -156,6 +178,7 @@ def DeleteHistoryTable():
 
 
 
+
 #DeleteHistoryTable()
 #CreateHistoryTable()
 #CallHistory()
@@ -163,3 +186,4 @@ def DeleteHistoryTable():
 
 if __name__ == "__main__":
     app.run(use_reloader = True, debug=True, host="0.0.0.0", port = 8001)
+    

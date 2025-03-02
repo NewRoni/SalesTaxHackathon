@@ -250,48 +250,45 @@ p {
 
 .page2 {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    height: 982px;
+    grid-template-columns: 2fr 1fr;
+    height: 520px;
+    background-color: #f5f5ff;
 }
 
 
 .history {
-    background-color: rgb(79, 128, 208);
-    display: grid;
-    grid-template-rows: 1fr 4fr .5fr;
+    /* background-color: rgb(79, 128, 208); */
 
+}
+
+.title {
+    /* background-color: rgb(223, 120, 223); */
+    text-align: right;
+    padding-right: 60px;
+    padding-top: 20px;
 }
 
 .data_visualisation {
-    background-color: rgb(223, 120, 223);
-    display: grid;
-    grid-template-rows: 1fr 1fr;
+    /* background-color: rgb(223, 120, 223); */
 }
 
-.filter {
-    background-color: rgb(79, 128, 208);
-    margin: 10px;
-}
 
 .pie_chart {
-    background-color: rgb(79, 128, 208);
-    margin: 10px;
-}
-
-
-.title {
-    background-color: rgb(223, 120, 223);
-    margin: 10px;
+    /* background-color: rgb(79, 128, 208); */
+    margin-top: 20px;
+    height: 425px;
 }
 
 .records {
-    background-color: rgb(223, 120, 223);
+    background-color: white;
     margin: 10px;
+    overflow: auto;
+    height: 400px;
 
 }
 
 .save {
-    background-color: rgb(223, 120, 223);
+    /* background-color: rgb(223, 120, 223); */
     margin: 10px;
     display: flex;
     justify-content: center;
@@ -303,8 +300,31 @@ p {
     max-height: 100%;
 }
 
-#captureBtn{
-    margin-right: auto; 
+#captureBtn {
+    margin-right: auto;
+    width: 184px;
+    height: 42px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border: 1.5px solid rgba(231, 231, 231, .8);
+    border-radius: 10px;
+    font-size: 12px;
+    background-color: #FFFFFF;
+    text-shadow: 0px 1px 7px rgba(0, 0, 0, .08);
+    color: #888888;
+    appearance: none;
+    cursor: pointer;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    display: flex;  /* Make the button a flex container */
+    align-items: center;  /* Vertically center content */
+    justify-content: center;  /* Horizontally center content */
+    font-family: Inter;
+}
+
+.dwnload_img {
+    height: 15px;
+    width: 15px;
+    margin-right: 8px;  /* Space between the image and text */
 }
 
 .scene-container .clickable {

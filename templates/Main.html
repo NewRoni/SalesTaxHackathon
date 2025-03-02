@@ -108,7 +108,7 @@
                 <div class = 'tax_paid'> 
                     <div class ='red_nd_perc'> 
                         <div class = 'red_tp'> Tax Paid</div>
-                        <div class = 'percentage'> %70</div>
+                        <div class = 'percentage'>%70</div>
                     </div>
                     <div class = 'final_price'> $10.99 </div>
                 </div>
@@ -654,15 +654,31 @@
         </div>
     </div>
     <div class = 'page2' id="capture" > 
-        <div class = 'history'> 
-            <div class = 'title'>  <h1> History </h1> </div>
-            <div class = 'records'> </div>
-            <div class = 'save'> <button id="captureBtn">Capture Screenshot</button> </div>
-        </div>
         <div class = 'data_visualisation'> 
-            <div class = 'filter'> </div>
             <div class = 'pie_chart'> 
                 <canvas id="myChart"> </canvas>
+            </div>
+            <div class="save">
+                <button id="captureBtn">
+                    <img class = 'dwnload_img' src="/static/download@3x.png" alt="Download" />
+                    Capture Screenshot
+                </button>
+            </div>
+
+        </div>
+        <div class = 'history'> 
+            <div class = 'title'>  <h1 style="margin-top: 0px;"> History </h1> </div>
+            <div class = 'records'>
+                {% if logs %}
+                {% for log in logs %}
+                    <div class="log-entry">
+                        <h3 class = 'loco'>{{ log[0] }}  </h3> <h3 class = 'price'> {{log[-1]}}</h3>
+                        <p><b class = ''>{{log[2]}} {{log[1]}}</b><p>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>No history available</p>
+            {% endif %}
             </div>
         </div>
     </div>
@@ -750,36 +766,91 @@
     </style>
 
     <!-- Pie Chart -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script> 
-        const data = {
-            labels: [
-                'Red',
-                'Blue',
-                'Yellow'
-            ],
-            datasets: [{
-                label: 'My First Dataset',
-                data: [300, 50, 100],
-                backgroundColor: [
-                    'rgb(255, 99, 132)',
-                    'rgb(54, 162, 235)',
-                    'rgb(255, 205, 86)'
-                ],
-                hoverOffset: 4
-            }]
-        };
-    
-        const config = {
-            type: 'pie',
-            data: data,
-        };
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const top3States = {{ top_3_states | tojson }};  // Convert the Python list to a JavaScript array
 
-        var myChart = new Chart(
-            document.getElementById('myChart'),
-            config
-        );
-    </script> 
+    const states = top3States.map(stateTax => stateTax[0]);
+    const tax = top3States.map(stateTax => stateTax[1]);
+    
+    const totalPrices = tax.map(amount => (amount + (amount * 0.1)).toFixed(2)); // Example: Tax plus 10% for total price (modify as needed)
+
+    const data = {
+        labels: states,
+        datasets: [{
+            label: 'Tax',
+            data: tax,
+            backgroundColor: [
+                'rgb(117, 117, 159)',
+                'rgb(160, 126, 180)',
+                'rgb(220, 220, 255)'
+            ],
+            hoverOffset: 10
+        }]
+    };
+
+    const customTextPlugin = {
+    id: 'customTextPlugin',
+    afterDatasetsDraw(chart) {
+        const ctx = chart.ctx;
+        const dataset = chart.data.datasets[0];
+        const arcs = chart.getDatasetMeta(0).data;
+
+        ctx.save();
+        ctx.font = 'bold 16px inter';
+        // ctx.fillStyle = '#333333';
+        ctx.fillStyle = 'white';
+        ctx.textAlign = 'center'; // Align the text horizontally at the center
+        ctx.textBaseline = 'middle'; // Align the text vertically in the middle
+
+        // Set text shadow
+        ctx.shadowColor = 'rgba(0, 0, 0, 0.22)';  // Black shadow color
+        ctx.shadowBlur = 7;          // Shadow blur effect
+        ctx.shadowOffsetX = 0;        // Shadow offset on the X axis
+        ctx.shadowOffsetY = 1; 
+
+        arcs.forEach((arc, index) => {
+            // Calculate the middle angle of the arc (slice)
+            const middleAngle = arc.startAngle + (arc.endAngle - arc.startAngle) / 2;
+
+            // Adjust text position based on the middle angle
+            const distanceFromCenter = arc.outerRadius * 0.6;  // Distance from the center of the pie slice
+
+            // Calculate the x and y position for the text
+            const x = arc.x + Math.cos(middleAngle) * distanceFromCenter;
+            const y = arc.y + Math.sin(middleAngle) * distanceFromCenter;
+
+            // Create the text: state name and total price (e.g., "California: $123.45")
+            const text = `${states[index]}: $${totalPrices[index]}`;
+
+            // Draw the text on the pie slice
+            ctx.fillText(text, x, y);
+        });
+
+        ctx.restore();
+    }
+};
+
+// Register the custom plugin
+Chart.register(customTextPlugin);
+
+const config = {
+    type: 'pie',
+    data: data,
+    options: {
+        plugins: {
+            legend: {
+                display: false // Correctly disable the legend
+            }
+        }
+    }
+};
+
+    var myChart = new Chart(
+        document.getElementById('myChart'),
+        config
+    );
+</script>
 
     <!-- User Save -->
     <script>

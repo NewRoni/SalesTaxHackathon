@@ -273,7 +273,7 @@ p {
     font-weight: bold;
     align-self: center;
     margin-right: 5px;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
 }
 
 
@@ -281,7 +281,7 @@ p {
     font-size: 39px;
     color: #C7C7C7;
     font-weight: bold;
-    margin-left: 15px;
+    margin-left: 14px;
     transform: translateY(-5px);
 }
 
@@ -293,23 +293,61 @@ p {
 }
 
 .ai_pt {
-    font-size: 18px;
-    font-weight: 500;
-    color: #D3D3D3;
-    padding-left: 10px;
+    font-size: 20px;
+    padding-left: 18px;
     justify-content: flex-start;
+    transform: translate(-8px, 20px);
+    background-image: linear-gradient(to right, 
+    rgba(168, 168, 168, 0.7) 5%,    /* #A8A8A8 with 80% opacity */
+    rgba(226, 226, 226, 1) 25%,   /* #E2E2E2 with 50% opacity */
+    rgba(168, 168, 168, 0.7) 65%,   /* #A8A8A8 with 30% opacity */
+    rgba(226, 226, 226, 1) 100%); /* #E2E2E2 with 60% opacity */
+    -webkit-background-clip: text; 
+    background-clip: text; 
+    color: transparent;
+    text-shadow: 0px 1px 7px rgba(0, 0, 0, .08);
 }
 
-.type_name {
-    font-size: 18px;
+.ai_star img {
+    width: 21px;
+    height: 21px;
+    transform: translate(135px, -13px);
+}
+
+.type_name_result {
+    padding-left: 10px;
+    font-size: 20px;
+    color: #333333;
+    transform: translateY(0px);
 }
 
 .red_tr {
-    font-size: 18px;
+    padding-left: 10px;
+    font-size: 19px;
+    color: #A32F2F;
+    font-weight: bold;
+    transform: translateY(8px);
+
 }
 
 .tax_rate{
-    font-size: 18px;
+    font-size: 21px;
+    color: #3C3535;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-thickness: 2px;
+    font-weight: 500;
+    transform: translate(90px, -16px);
+    margin-left: 11px;
+}
+
+.extra_note{
+    /* background-color: lightpink; */
+    height: 50px;
+    color: #333333;
+    font-size: 12px;
+    width: 95%;
+    padding-left: 40px;
 }
 
 .map svg {
@@ -458,13 +496,4 @@ p {
     background-clip: text; 
     color: transparent;
     text-shadow: 0px 1px 7px rgba(0, 0, 0, .08);
-}
-
-.product_name {
-    font-size: 17px;
-}
-
-.ai_star img {
-    width: 21px;
-    height: 21px;
 }

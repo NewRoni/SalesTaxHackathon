@@ -1,197 +1,6 @@
-body {
-    background-color: #FAFAFF;
-    font-family: 'Inter';
-  }
-
-h1 {
-    font-weight: 700;
-    font-size: 44px;
-    filter: drop-shadow(0px 1px 7px rgba(0, 0, 0, 0.12));
-    color: #000000;
-
-}
-
-p {
-    text-shadow: 0px 1px 7px rgba(0, 0, 0, .08);
-}
-
-
-.page {
-    display: grid;
-    grid-template-columns: 1fr 3fr;
-    min-height: 862px;
-}
-
-.content{
-    padding-left: 60px;
-}
-
-
-.web_intro{
-    margin: 10px;
-}
-
-.entry {
-    background-color: white;
-    margin: 10px;
-    margin-left: 0px;
-    margin-top: 25px;
-    margin-bottom: 0px;
-    border-radius: 20px;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    border-style: solid;
-    border-color: rgba(231, 231, 231, 0.8);
-    border-width: 2px;
-    display: grid;
-    grid-template-rows: 1fr 1fr;
-    height: 214px;
-    width: 444px;
-    padding: 10px;
-}
-
-
-#product_type{
-    display: inline;
-}
-
-
-.product_nd_type {
-    /* background-color: lightblue; */
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    padding: 10px;
-    border-bottom: 1px solid rgba(217, 217, 217, 0.5);
-}
-
-.input_label_name {
-    color: #888888;
-    display: block;
-    margin-top: 4px;
-    font-size: 16px;
-    text-shadow: 0px 1px 7px rgba(0, 0, 0, .08);
-    letter-spacing: 0.03em;
-}
-
-#itemName {
-    width: 244px;
-    height: 43px;
-    padding: 10px;
-    border: 1.5px solid #E7E7E7;
-    border-radius: 5px;
-    box-sizing: border-box;
-    font-size: 16px;
-    margin-top: 7px;
-}
-
-.input_label {
-    color: #888888;
-    display: block; /* Makes sure the label is displayed as a block element */
-    font-size: 14px;
-    text-shadow: 0px 1px 7px rgba(0, 0, 0, .08);
-    margin-top: 0; /* Adjusts the label margin */
-    margin-bottom: 0; /* Removes any bottom margin */
-    align-self: center; /* Vertically aligns the label in the middle */
-    letter-spacing: 0.03em;
-}
-
-#price {
-    width: 168px; /* Adjust the width of the price input */
-    height: 43px;
-    padding: 10px;
-    border: 1.5px solid #E7E7E7;
-    border-radius: 5px;
-    box-sizing: border-box;
-    font-size: 20px;
-    color: #888888;
-    text-shadow: 0px 1px 7px rgba(0, 0, 0, .08);
-    margin-right: 22px;
-}
-
-#quantity {
-    width: 68px;
-    height: 33px;
-    padding: 10px;
-    border: 1.5px solid #E7E7E7;
-    border-radius: 5px;
-    box-sizing: border-box;
-    font-size: 16px;
-    margin-right: 5px;
-}
-
-.ximg img {
-    width: 16px;
-    height: 16px;
-    margin-right: 22px;
-  }
-
-.price_nd_quantity {
-    /* background-color: lightpink; */
-    display: flex; 
-    align-items: center; 
-    padding: 10px;
-}
-
-.destination {
-    /* background-color: lightblue; */
-    height: 130px;
-    width: 464px;
-    margin-bottom: 15px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-
-#state {
-    width: 444px;
-    height: 42px;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    padding: 20px;
-    border: 2px solid rgba(231, 231, 231, .8);
-    border-radius: 20px;
-    font-size: 24px;
-    background-color: #FFFFFF;
-    margin-right: 10px;
-    text-shadow: 0px 1px 7px rgba(0, 0, 0, .08);
-    font-size: 22px;
-    color: #888888;
-    appearance: none;
-    -webkit-appearance: none;
-    cursor: text;
-}
-
-
-
-.final_submit{
-    height: 80px;
-    width: 100px;
-    border: 2px solid rgba(231, 231, 231, .8);
-    border-radius: 20px;
-    background-color: #FFFFFF;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    font-size: 14px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-}
-
-.final_submit img {
-    width: 52px;
-    height: 52px;
-  }
-
-
-  .seperating_line {
-    border-top: 2px solid #e7e7e7; /* Creates a horizontal line at the top */
-    width: 97%; /* Makes the line span the full width of its container */
-}
-
 #taxResult{
     background-color: white;
-    margin: 10px 0 25px 0;
+    margin: 10px;
     margin-left: 0px;
     margin-top: 25px;
     border-radius: 20px;
@@ -226,32 +35,21 @@ p {
 }
 
 
-.type_info .label {
-    color: #D3D3D3;
-    font-size: 18px;
-    font-weight: bold;
-}
-
-.type_info .value {
-    font-size: 24px;
-    color: #000;
-    font-weight: normal;
-}
-
-
 .red_tp {
     font-size: 25px;
     color: #A32F2F;
     font-weight: bold;
     align-self: center;
+    margin-right: 5px;
     margin-bottom: 5px;
 }
+
 
 .percentage {
     font-size: 39px;
     color: #C7C7C7;
     font-weight: bold;
-    margin-left: 20px;
+    margin-left: 15px;
     transform: translateY(-5px);
 }
 
@@ -268,10 +66,16 @@ p {
     color: #D3D3D3;
     padding-left: 10px;
     justify-content: flex-start;
+    transform: translate(-8px, 10px);
 }
 
 .type_name {
     font-size: 18px;
+    transform: translateY(-10px);
+}
+
+.ai_star {
+    transform: translate(114px, -23px);
 }
 
 .red_tr {
@@ -280,80 +84,5 @@ p {
 
 .tax_rate{
     font-size: 18px;
+    transform: translate(80px, -21px);
 }
-
-.map svg {
-    width: 100%;  /* Make SVG scale within the container */
-    height: 100%;
-}
-
-.page2 {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    height: 982px;
-}
-
-
-.history {
-    background-color: rgb(79, 128, 208);
-    display: grid;
-    grid-template-rows: 1fr 4fr .5fr;
-
-}
-
-.data_visualisation {
-    background-color: rgb(223, 120, 223);
-    display: grid;
-    grid-template-rows: 1fr 1fr;
-}
-
-.filter {
-    background-color: rgb(79, 128, 208);
-    margin: 10px;
-}
-
-.pie_chart {
-    background-color: rgb(79, 128, 208);
-    margin: 10px;
-}
-
-
-.title {
-    background-color: rgb(223, 120, 223);
-    margin: 10px;
-}
-
-.records {
-    background-color: rgb(223, 120, 223);
-    margin: 10px;
-
-}
-
-.save {
-    background-color: rgb(223, 120, 223);
-    margin: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#myChart {
-    max-width: 100%;
-    max-height: 100%;
-}
-
-#captureBtn{
-    margin-right: auto; 
-}
-
-.scene-container .clickable {
-    cursor: pointer;
-  }
-
-#globe-container {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}  

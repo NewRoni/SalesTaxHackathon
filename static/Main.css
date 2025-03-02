@@ -196,7 +196,13 @@ p {
     cursor: text;
 }
 
+#state::placeholder {
+    color: #888888; /* Change the color of the placeholder (dollar sign) */
+}
 
+#state:not(:placeholder-shown) {
+    color: #333; /* Ensure the input text color remains when typing */
+}
 
 .final_submit{
     height: 80px;

@@ -189,57 +189,52 @@ p {
     width: 97%; /* Makes the line span the full width of its container */
 }
 
-.tax_result{
+#taxResult{
     background-color: white;
     margin: 10px;
     margin-left: 0px;
     margin-top: 25px;
     border-radius: 20px;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    display: grid;
-    height: 140px;
     padding: 10px;
-    grid-template-columns: 2fr 3fr;
     width: 444px;
 }
 
-.type_info{
-    background-color: lightblue;
-
-}
-
 .tax_paid {
-    /* background-color: lightpink; */
-    display: grid;
-    grid-template-rows: 1fr 1fr; /* 1st row for the side-by-side items, 2nd for the final price */
-    grid-template-columns: auto; /* Ensure everything is centered */
+    display: inline-block;
+    vertical-align: top;   /* Aligns inline-block elements at the top */
 }
 
+.type_info {
+    display: inline-block;
+    width: 175px;
+}
 .red_nd_perc {
     display: flex;
-    flex-direction: row; /* Make them side by side */
-    align-items: center;
-    align-self: end;/* Vertically align the items */
+    align-self: end;
 }
 
 .red_tp {
     font-size: 25px;
     color: #A32F2F;
     font-weight: bold;
-    margin-right: 10px; /* Add space between .red_tp and .percentage */
+    align-self: center;
+    margin-right: 20px;
 }
 
 .percentage {
     font-size: 39px;
     color: #C7C7C7;
     font-weight: bold;
+    margin-right: 30px;
+    align-self: flex-end
 }
 
 .final_price {
     font-size: 65px;
     color: #333333;
     font-weight: bold;
-    align-self: start;
+    align-self: center;
     text-shadow: 0px 1px 7px rgba(0, 0, 0, .08);
 }
 
@@ -293,6 +288,7 @@ p {
 
 .save {
     margin: 10px;
+    margin-top: 20px;
     display: flex;
     justify-content: center;
     align-items: flex-end; 

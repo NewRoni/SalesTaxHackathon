@@ -43,7 +43,7 @@ def Main(user_logs):
     session_id = session['session_id']
     print(f"Session id: {session_id}")
     
-    return render_template('update_main.html', logs=user_logs)
+    return render_template('Main.html', logs=user_logs)
 
 @app.route('/save_calculation', methods=['POST'])
 def save_calculation():

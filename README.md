@@ -1,5 +1,6 @@
 # SalesTaxHackathon
-![Uploading us_tax_calc_demo_final_.gif…]()
+![us_tax_calc_demo_final_](https://github.com/user-attachments/assets/19591d47-f06b-45ab-b9f5-caad419aca53)
+
 
 
 ## Project Overview

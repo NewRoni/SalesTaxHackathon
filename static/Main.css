@@ -250,13 +250,13 @@ p {
 
 
 .red_tp {
-    font-size: 25px;
+    font-size: 28px;
     color: #A32F2F;
     font-weight: bold;
     margin-bottom: 8px;
     position: absolute;
-    top: 30px;
-    left: 35px;
+    top: 22px;
+    left: -10px;
 }
 
 
@@ -494,4 +494,9 @@ p {
     text-align: center;
     padding-top: 20px;
 
+}
+
+
+.in_tax {
+    font-size: 12px;
 }

@@ -24,7 +24,7 @@ This project aims to streamline the tax calculation process by utilizing machine
 
 ### Other Notes on Features
 - Users do not need to manually enter the product type.
-- Provides a visual map for immersive user engagement.
+- Provides a visual map showing selected and top states for immersive user engagement.
 - Enables users to view the distribution of calculations, archived for future reference.
 - Offers a tax calculator *accessible as an API endpoint* or through a dedicated website.
 

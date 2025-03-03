@@ -39,7 +39,7 @@ def check_session(f):
 # Starts a user session and greets the user with an input box
 @app.route('/')
 @check_session
-def Main(user_logs):
+def Main(user_logs=None):
     global session_id
     session_id = session['session_id']
     print(f"Session id: {session_id}")

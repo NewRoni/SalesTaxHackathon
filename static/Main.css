@@ -329,13 +329,18 @@ p {
     margin-left: 11px;
 }
 
-.extra_note{
+.extra_note {
     /* background-color: lightpink; */
     height: 50px;
     color: #333333;
     font-size: 12px;
-    width: 95%;
-    padding-left: 40px;
+    width: 445px;
+    padding-left: 20px;
+}
+
+.extra_note_title {
+    font-size: 14px;
+    font-weight: 500;
 }
 
 .map svg {

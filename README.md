@@ -1,4 +1,5 @@
 # SalesTaxHackathon
+![us_tax_calc_demo_final_vid-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/859e4cb1-62d1-4a58-a7e5-a8edbdeaffa4)
 
 ## Project Overview
 This project aims to streamline the tax calculation process by utilizing machine learning to automate product type identification and tax calculations, thereby improving user experience and efficiency.

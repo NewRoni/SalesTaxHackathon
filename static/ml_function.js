@@ -44,7 +44,7 @@ $(document).ready(function() {
                         console.log("STD RATE: " + std_rate + ", TAX RATE: " + tax_rate);
                         const pct_of_pretax = 100 * (final_price - pretax_price)/final_price
 
-                        $(".type_name").text(productType)
+                        $(".type_name_result").text(productType)
                         $(".tax_rate").text(response.tax_rate + "%")
                         $(".final_price").text(final_price)
                         $(".percentage").text(response.total_tax)

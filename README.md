@@ -33,5 +33,6 @@ This project aims to streamline the tax calculation process by utilizing machine
 
 ## Next Steps
 - Develop a filtering system for improved user queries.
+- Increase data and training of existing models
 - Create models for local and within-state tax calculations.
 - Implementation of an automated pipeline for data scraping, model retraining, and deployment.

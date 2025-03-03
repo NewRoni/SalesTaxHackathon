@@ -41,7 +41,7 @@ def Main(user_logs):
     global session_id
     session_id = session['session_id']
     print(f"Session id: {session_id}")
-    top_3_states = StateTotalTax(user_logs)
+    top_3_states = StateTotalTax()
     
     return render_template('Main.html', logs=user_logs, top_3_states = top_3_states)
 
@@ -120,8 +120,12 @@ DB_NAME = 'SalesTax.db'
 with sqlite3.connect(DB_NAME) as db:
   pass
 
-def StateTotalTax(user_logs):
+@app.route('/top_cost_states', methods= ['GET', 'POST'])
+def StateTotalTax():
     state_tax_dict = {}
+    
+    history = CallHistory()
+    user_logs = [[log[2].title()] + list(log[3:]) for log in history if log[1] == session['session_id']]
 
     for log in user_logs:
         state = log[0]

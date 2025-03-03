@@ -48,6 +48,7 @@ $(document).ready(function() {
                         $(".tax_rate").text(response.tax_rate + "%")
                         $(".final_price").text("$" + final_price.toFixed(2))
                         $(".percentage").text("$" + total_tax.toFixed(2))
+                        $(".in_tax").text(" taxed")
                         if (std_rate - tax_rate > thold) {
                             $(".extra_note").text("Note: Tax rates for " + state + " may have tax exemptions or reduced-rate for this product type")
                         } else if (tax_rate - std_rate > thold) {
@@ -88,6 +89,10 @@ $(document).ready(function() {
             success: function(response) {
                 console.log("Calculation saved to database:", response);
                 appendHistoryLog(data)
+                check_and_update_Piechart({
+                    state: data.state,
+                    tax_paid: data.tax_paid
+                })
             },
             error: function(xhr, status, error) {
                 console.error("Error saving calculation:", xhr, status, error);
@@ -109,5 +114,97 @@ $(document).ready(function() {
         </div>
         `;
         $('.records').prepend(newEntry);
+    }
+    function check_and_update_Piechart(data){
+        $.ajax({
+            url: "/top_cost_states",
+            type: "POST",
+            data: JSON.stringify(data),
+            contentType: "application/json",
+            success: function(response) {
+                console.log("Fetched latest top cost states:", response);
+                if (window.myChart) {
+                    // Extract states and tax values from response
+                    const states = response.map(item => item[0]);
+                    const tax = response.map(item => item[1]);
+                    const totalPrices = tax.map(amount => (amount + (amount * 0.1)).toFixed(2));
+    
+                    // Update chart data
+                    window.myChart.data = {
+                        labels: states,
+                        datasets: [{
+                            label: 'Tax',
+                            data: tax,
+                            backgroundColor: [
+                                'rgb(117, 117, 159)',
+                                'rgb(160, 126, 180)',
+                                'rgb(220, 220, 255)'
+                            ],
+                            hoverOffset: 10
+                        }]
+                    };
+    
+                    // Update or recreate the custom text plugin
+                    const customTextPlugin = {
+                        id: 'customTextPlugin',
+                        afterDatasetsDraw(chart) {
+                            const ctx = chart.ctx;
+                            const dataset = chart.data.datasets[0];
+                            const arcs = chart.getDatasetMeta(0).data;
+    
+                            ctx.save();
+                            ctx.font = 'bold 16px inter';
+                            ctx.fillStyle = 'white';
+                            ctx.textAlign = 'center';
+                            ctx.textBaseline = 'middle';
+    
+                            ctx.shadowColor = 'rgba(0, 0, 0, 0.22)';
+                            ctx.shadowBlur = 7;
+                            ctx.shadowOffsetX = 0;
+                            ctx.shadowOffsetY = 1;
+    
+                            arcs.forEach((arc, index) => {
+                                const middleAngle = arc.startAngle + (arc.endAngle - arc.startAngle) / 2;
+                                const distanceFromCenter = arc.outerRadius * 0.6;
+    
+                                const x = arc.x + Math.cos(middleAngle) * distanceFromCenter;
+                                const y = arc.y + Math.sin(middleAngle) * distanceFromCenter;
+    
+                                const text = `${states[index]}: $${totalPrices[index]}`;
+                                ctx.fillText(text, x, y);
+                            });
+    
+                            ctx.restore();
+                        }
+                    };
+    
+                    // Unregister existing plugin if it exists
+                    Chart.unregister(Chart.registry.plugins.get('customTextPlugin'));
+                    
+                    // Register the updated plugin
+                    Chart.register(customTextPlugin);
+    
+                    // Update chart options if needed
+                    window.myChart.options = {
+                        plugins: {
+                            legend: {
+                                display: false
+                            }
+                        }
+                    };
+    
+                    // Force a complete redraw
+                    window.myChart.update();
+
+                    
+                } else {
+                    console.warn('Pie chart not found - might not be initialized yet');
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error("Error saving calculation:", xhr, status, error);
+                alert('Error saving calculation: ' + xhr.responseText);
+            }
+        });
     }
 });

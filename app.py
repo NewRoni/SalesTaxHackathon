@@ -26,6 +26,8 @@ def check_session(f):
             session['session_id'] = str(uuid.uuid4()) # generate session id
             session.permanent = True
         else:
+            # DeleteHistoryTable()
+            # CreateHistoryTable()
             history = CallHistory()
             user_logs = [[log[2].title()] + list(log[3:]) for log in history if log[1] == session['session_id']]
             user_logs = list(reversed(user_logs))
@@ -35,7 +37,7 @@ def check_session(f):
     return decorated_function
 
 # Starts a user session and greets the user with an input box
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/')
 @check_session
 def Main(user_logs):
     global session_id

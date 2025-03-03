@@ -1,1 +1,37 @@
 # SalesTaxHackathon
+
+## Project Overview
+This project aims to streamline the tax calculation process by utilizing machine learning to automate product type identification and tax calculations, thereby improving user experience and efficiency.
+
+## Development Process
+1. **Research and Design**: 
+   - Identified model parameters and prioritized features.
+   - Designed the user interface on Figma.
+   
+2. **Implementation**: 
+   - Developed the UI, trained the text and tax calculation model.
+   - Set up the database.
+   - Established API endpoints for interaction.
+
+## Data Process
+- **Form Entry and Submission**: The user fills out a form which automatically identifies the product type.
+- **ML Product Type Identification**: Leveraging machine learning to classify products.
+- **ML Tax Calculation**: Automatically calculates the applicable tax based on identified product type.
+- **Data Storage**: Saves user input and calculation results to the database for future reference and logs history.
+
+### Features
+- Users do not need to manually enter the product type.
+- Provides a visual map for immersive user engagement.
+- Enables users to view the distribution of calculations, archived for future reference.
+- Offers a tax calculator accessible as an API endpoint or through a dedicated website.
+
+## Challenges
+- **Working with Multiple Languages**: Implemented functionalities using four different programming languages.
+- **Map Integration Issues**: Faced challenges with the mapping functionalities.
+- **UI Rework**: Significant adjustments made to connect the form to the map and redesign the form.
+- **Usage of jQuery and AJAX**: Required to call endpoints without page refresh, adding complexity.
+
+## Next Steps
+- Develop a filtering system for improved user queries.
+- Create models for local and within-state tax calculations.
+- Implementation of an automated pipeline for data scraping, model retraining, and deployment.

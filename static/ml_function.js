@@ -62,6 +62,7 @@ $(document).ready(function() {
                 }
                 success = saveCalculation(response, productType)
                 $("#taxForm")[0].reset(); // Clear the form
+                $('.extra_note').empty()
             },
             error: function(xhr, status, error) {
                 console.error("Error calculating tax:", error);
@@ -193,7 +194,6 @@ $(document).ready(function() {
                         }
                     };
     
-                    // Force a complete redraw
                     window.myChart.update();
 
                     

@@ -4,11 +4,9 @@ from training import load_model
 from product_clf.preprocess import preprocess
 import sqlite3
 import uuid
-import logging
 import ml_utilities as ml
 import pandas as pd
 import json
-import pickle
 
 config = json.load(open('config.json', 'r'))
 tax_model = load_model(f"{config['tax_model_dir']}/model3.pkl")
@@ -30,13 +28,14 @@ def check_session(f):
         else:
             history = CallHistory()
             user_logs = [[log[2].title()] + list(log[3:]) for log in history if log[1] == session['session_id']]
+            user_logs = list(reversed(user_logs))
             kwargs['user_logs'] = user_logs
             print(user_logs)
         return f(*args, **kwargs)
     return decorated_function
 
 # Starts a user session and greets the user with an input box
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 @check_session
 def Main(user_logs):
     global session_id

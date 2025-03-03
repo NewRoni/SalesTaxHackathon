@@ -22,7 +22,7 @@ This project aims to streamline the tax calculation process by utilizing machine
 3. **ML Tax Calculation**: Automatically calculates the applicable tax based on identified product type.
 4. **Data Storage**: Saves user input and calculation results to the database for future reference and logs history.
 
-### Features
+### Other Notes on Features
 - Users do not need to manually enter the product type.
 - Provides a visual map for immersive user engagement.
 - Enables users to view the distribution of calculations, archived for future reference.

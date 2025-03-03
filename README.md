@@ -16,7 +16,7 @@ This project aims to streamline the tax calculation process by utilizing machine
    - Set up the database.
    - Established API endpoints for interaction.
 
-## Data Process
+## Data and Calculation Process
 1. **Form Entry and Submission**: The user fills out a form which automatically identifies the product type.
 2. **ML Product Type Identification**: Leveraging machine learning to classify products.
 3. **ML Tax Calculation**: Automatically calculates the applicable tax based on identified product type.

@@ -39,15 +39,15 @@ $(document).ready(function() {
                         const std_rate = parseFloat(basicRates[state]) * 100.0;
                         const tax_rate = parseFloat(response.tax_rate);
                         var pretax_price = parseFloat(formParams.get("price")) * parseFloat(formParams.get("quantity"))
-                        var final_price = pretax_price + parseFloat(response.total_tax)
-                        const thold = 0.9;
+                        var total_tax = parseFloat(response.total_tax)
+                        var final_price = pretax_price + total_tax
+                        const thold = 1.0;
                         console.log("STD RATE: " + std_rate + ", TAX RATE: " + tax_rate);
-                        const pct_of_pretax = 100 * (final_price - pretax_price)/final_price
 
                         $(".type_name_result").text(productType)
                         $(".tax_rate").text(response.tax_rate + "%")
-                        $(".final_price").text(final_price)
-                        $(".percentage").text(response.total_tax)
+                        $(".final_price").text("$" + final_price.toFixed(2))
+                        $(".percentage").text("$" + total_tax.toFixed(2))
                         if (std_rate - tax_rate > thold) {
                             $(".extra_note").text("Note: Tax rates for " + state + " may have tax exemptions or reduced-rate for this product type")
                         } else if (tax_rate - std_rate > thold) {

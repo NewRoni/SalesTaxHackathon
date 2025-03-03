@@ -26,6 +26,8 @@ def check_session(f):
             session['session_id'] = str(uuid.uuid4()) # generate session id
             session.permanent = True
         else:
+            # DeleteHistoryTable()
+            # CreateHistoryTable()
             history = CallHistory()
             user_logs = [[log[2].title()] + list(log[3:]) for log in history if log[1] == session['session_id']]
             user_logs = list(reversed(user_logs))
@@ -35,13 +37,13 @@ def check_session(f):
     return decorated_function
 
 # Starts a user session and greets the user with an input box
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/')
 @check_session
 def Main(user_logs):
     global session_id
     session_id = session['session_id']
     print(f"Session id: {session_id}")
-    top_3_states = StateTotalTax(user_logs)
+    top_3_states = StateTotalTax()
     
     return render_template('Main.html', logs=user_logs, top_3_states = top_3_states)
 
@@ -120,8 +122,12 @@ DB_NAME = 'SalesTax.db'
 with sqlite3.connect(DB_NAME) as db:
   pass
 
-def StateTotalTax(user_logs):
+@app.route('/top_cost_states', methods= ['GET', 'POST'])
+def StateTotalTax():
     state_tax_dict = {}
+    
+    history = CallHistory()
+    user_logs = [[log[2].title()] + list(log[3:]) for log in history if log[1] == session['session_id']]
 
     for log in user_logs:
         state = log[0]

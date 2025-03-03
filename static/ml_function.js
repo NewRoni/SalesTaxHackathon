@@ -38,12 +38,16 @@ $(document).ready(function() {
                         state = state.charAt(0).toUpperCase() + state.substring(1).toLowerCase()
                         const std_rate = parseFloat(basicRates[state]) * 100.0;
                         const tax_rate = parseFloat(response.tax_rate);
+                        var pretax_price = parseFloat(formParams.get("price")) * parseFloat(formParams.get("quantity"))
+                        var final_price = pretax_price + parseFloat(response.total_tax)
                         const thold = 0.9;
                         console.log("STD RATE: " + std_rate + ", TAX RATE: " + tax_rate);
+                        const pct_of_pretax = 100 * (final_price - pretax_price)/final_price
 
                         $(".type_name").text(productType)
                         $(".tax_rate").text(response.tax_rate + "%")
-                        $(".final_price").text(response.total_tax)
+                        $(".final_price").text(final_price)
+                        $(".percentage").text(response.total_tax)
                         if (std_rate - tax_rate > thold) {
                             $(".extra_note").text("Note: Tax rates for " + state + " may have tax exemptions or reduced-rate for this product type")
                         } else if (tax_rate - std_rate > thold) {
@@ -83,6 +87,7 @@ $(document).ready(function() {
             contentType: "application/json",
             success: function(response) {
                 console.log("Calculation saved to database:", response);
+                appendHistoryLog(data)
             },
             error: function(xhr, status, error) {
                 console.error("Error saving calculation:", xhr, status, error);
@@ -90,5 +95,19 @@ $(document).ready(function() {
             }
         });
     }
+    function appendHistoryLog(data) {
+        const newEntry = `
+        <div class="log-entry">
+            <div class="top_log">
+                <div class="loco">${data.state}</div>
+                <div class="price_history">$${data.tax_paid}</div>
+            </div>
+            <div class="bottom_log">
+                <div class="type_name">${data.product_type},</div>
+                <div class="product_name">(${data.itemName})</div>
+            </div>
+        </div>
+        `;
+        $('.records').prepend(newEntry);
+    }
 });
-

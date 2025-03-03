@@ -658,6 +658,7 @@
     </div>
     <div class = 'page2'> 
         <div class = 'data_visualisation'> 
+            <div class = 'pie_heading'> Your Top States</div>
             <div class = 'pie_chart' id="capture_pie_chart"> 
                 <canvas id="myChart"> </canvas>
             </div>
@@ -814,7 +815,6 @@
     const tax = top3States.map(stateTax => stateTax[1]);
     
     const totalPrices = tax.map(amount => (amount + (amount * 0.1)).toFixed(2)); // Example: Tax plus 10% for total price (modify as needed)
-
     const data = {
         labels: states,
         datasets: [{

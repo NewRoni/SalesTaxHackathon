@@ -272,8 +272,8 @@ p {
     color: #A32F2F;
     font-weight: bold;
     align-self: center;
-    margin-right: 80px;
     margin-bottom: 8px;
+    transform: translateX(-100px)
 }
 
 
@@ -281,7 +281,6 @@ p {
     font-size: 34px;
     color: #C7C7C7;
     font-weight: bold;
-    margin-left: 14px;
     transform: translateY(-5px);
 }
 
